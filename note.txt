@@ -1,0 +1,53 @@
+DAY 1
+
+Component > Komponen adalah bagian-bagian yang menyusun aplikasi React.
+Embed > 
+Event > ada interaksi antara website dengan pengguna
+SPA > Misalnya saat kita sedang berada pada halaman home dari facebook, lalu kita navigasi ke halaman grup atau yang lainnya. Di sana kita akan melihat tidak banyak perubahan yang ditampilkan dan lebih cepat. Hal tersebut dikarenakan browser tidak harus memuat ulang seluruh halaman.
+JSX > bisa memasukkan tag html di dalam javascript
+props > Props adalah suatu cara untuk mengirim dan mengakses data dari komponent lain secara langsung.
+state > menyimpan data pada React dan akan di render atau muat ulang ketika data mengalami perubahan.
+conditional rendering > Rendering bersyarat (Conditional Rendering) di React bekerja dengan cara yang sama seperti kondisi bekerja di JavaScript. Gunakan operator JavaScript seperti if atau operator kondisional untuk membuat elemen yang mewakili keadaan saat ini, dan biarkan React memperbarui UI untuk mencocokkannya.
+
+TUGAS 
+SPA, JSX, state, Event, Component, Embed, Conditional Rendering
+
+DAY 2
+{{untuk ambil objectnya}} bukan argumen biasa
+
+exact > mencocokkan
+element > merender
+link to > merujuk
+routes > mengelompokkan
+route > mendefinisiakn yang ditampilkan dan alamat tujuan
+useNavigate() > mengembalikan metode yang memungkinkan kita menavigasi dari satu tautan ke tautan lainnya
+url Params> mengambil nilai yang ada di dalam URL, berguna meneruskan data secara dinamis anatar halaman
+outlet > menampung
+props tye . make sure yang  ngirim data tidak sembarangan
+privateROute > 
+
+
+DAY 3
+HOOK => React Hooks adalah fungsi JavaScript yang diimpor dari React untuk menambahkan kemampuan khusus untuk component yang dibuat. 
+=> import component from "react" 
+=> function extend component
+=> constructor init Global
+=> super
+=> render => return => html
+
+Use Effect => 
+LifeCycle component => mounting , Updating , Unmounting
+Mounting =. halaman di tampilkan, componentDidMounting()
+Updating = Perubahan Data , componentDidUpdate()
+Unmounting = content di hapus 
+
+lifecycle function 
+=> import { useState, useEffect } from react
+
+
+
+
+
+
+
+

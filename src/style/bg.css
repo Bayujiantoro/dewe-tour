@@ -1,0 +1,29 @@
+.bgImg {
+    background-image: url("../images/image-1.png");
+    /* background-color: tomato; */
+    /* height: 77vh; */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: whitesmoke;
+    
+}
+
+.btn-orange{
+    background-color: darkorange !important;
+    color: white !important;
+}
+
+.bgColor {
+    background-color: whitesmoke;
+
+}
+
+.bgNav{
+    background-image: url("../images/image-1.png");
+}
+
+.bt-transparant {
+    background-color: rgba(0,0,0,0.1)!important;
+    width: 100px;
+    border-color: white !important;
+}
