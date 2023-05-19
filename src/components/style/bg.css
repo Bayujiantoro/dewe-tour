@@ -17,6 +17,11 @@
     background-color: rgb(245, 245, 245);
 
 }
+.outLine {
+    outline: none!important;
+    outline-style: none;
+    outline-color: darkorange;
+}
 
 .bgNav{
     background-image: url("../images/image-1.png");
@@ -27,4 +32,12 @@
     background-color: rgba(0,0,0,0.1)!important;
     width: 100px;
     border-color: white !important;
+}
+
+.text{
+    text-decoration: none!important;
+    color: black;
+}
+a:hover{
+    color: black!important;
 }

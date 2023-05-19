@@ -9,6 +9,8 @@ import icon from "../images/Ellipse1.png"
 
 import ModalLogin from '../form/modalLogin';
 import ModalRegister from '../form/modalRegister';
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 
 
@@ -17,13 +19,17 @@ import ModalRegister from '../form/modalRegister';
 
 function NavigationBar(props) {
   const [isLogin, setIsLogin] = useState(false);
+  const [register, setRegister] = useState(false)
   const [changeNav, setChangeNav] = useState(false)
 
   const NavIcon = () => { setChangeNav(true) }
   const NavLogin = () => { setChangeNav(false) }
+  
+  const ModalShowLogin = () => { setIsLogin(true);}
+  const ModalOutLogin = () => { setIsLogin(false) }
 
-  const HandleShowLogin = () => { setIsLogin(true);}
-  const HandleOutLogin = () => { setIsLogin(false)}
+  const ModalShowReg = () => { setRegister(true)}
+  const ModalOutReg = () => { setRegister(false)}
 
 
 
@@ -35,21 +41,28 @@ function NavigationBar(props) {
           <Navbar.Collapse className="justify-content-end" >
 
             {!changeNav ? (<Stack direction="horizontal" gap={3}>
-              <Button className='bt-transparant btn-size' onClick={HandleShowLogin}>   Login   </Button>{' '}
-              <Button variant="warning" style={{ color: "white" }} onClick={props.inReg}>Register</Button>{' '}
+              <Button className='bt-transparant btn-size' onClick={ModalShowLogin}>   Login   </Button>{' '}
+              <Button variant="warning" style={{ color: "white" }} onClick={ModalShowReg}>Register</Button>{' '}
             </Stack>) : (
-              <Image src={icon} />
-
+              <Dropdown>
+              <Dropdown.Toggle variant="" id="dropdown-basic" style={{border:"none"}}>
+                <Image src={icon} />
+              
+              </Dropdown.Toggle>
+        
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Pay</Dropdown.Item>
+                <Dropdown.Item onClick={NavLogin}>Log Out</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             )}
-
-
-
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      <ModalLogin out={HandleOutLogin} show={isLogin} login={HandleShowLogin}/>
-      {/* <ModalRegister out={} show={} /> */}
+      <ModalLogin outModal={ModalOutLogin} showModal={isLogin} chgNavbar={NavIcon}/>
+      <ModalRegister outModal={ModalOutReg} show={register} inLogin={ModalShowLogin}/>
     </div>
 
   );

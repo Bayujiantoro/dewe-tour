@@ -10,11 +10,13 @@ import Clock from "../images/time1.png"
 import Time from "../images/calendar1.png"
 import Minus from "../images/Minus.png"
 import Plus from "../images/Plus.png"
+import { TourData } from "../fake-data/dummy";
 
 export default function DetailContaint() {
     return (
 
         <div>
+
             <div className="container my-5 ps-5 " style={{ width: "80%" }}>
                 <h1 className="fw-bold">6D/4N Fun Taissie Vacation + Sydney</h1>
                 <p style={{ color: "grey", fontSize: "20px" }} className="fw-semibold">Australia</p>
@@ -54,6 +56,7 @@ export default function DetailContaint() {
                 </div>
 
             </div>
+
         </div>
     )
 }

@@ -5,7 +5,7 @@ import Boking from "./components/booking/booking"
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
-
+import { useParams } from "react-router-dom";
 
 
 
@@ -13,13 +13,13 @@ import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
 function App() {
-
+  const id = useParams()
 
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/detail" element={<Detail/>}/>
+        <Route path="/detail/:id" element={<Detail/>}/>
         <Route path="/boking" element={<Boking/>}/>
 
       </Routes>
