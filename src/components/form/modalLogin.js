@@ -26,9 +26,9 @@ function ModalLogin(props) {
           <Form.Control type="email" style={{ height: "45px" }} />
 
           <label className='fs-4 fw-bold mt-5'>Password</label >
-          <Form.Control type="email" style={{ height: "45px", marginBottom: "30px", }} />
+          <Form.Control type="password" style={{ height: "45px", marginBottom: "30px", }} />
 
-          <button type="button" className="btn btn-orange" style={{ borderRadius: "3px", width: "100%" }} onClick={props.out}> LOGIN </button>
+          <button type="button" className="btn btn-orange" style={{ borderRadius: "3px", width: "100%" }} onClick={props.login}> LOGIN </button>
           <p className='text-center mt-3' style={{ color: "grey" }}>Don't Have Account ? Click<span className='fw-bold'>  Here </span></p>
 
         </Modal.Body>

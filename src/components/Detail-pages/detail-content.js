@@ -31,12 +31,14 @@ export default function DetailContaint() {
                 <p style={{ color: "grey", fontSize: "13px", fontWeight: "600", marginBottom: "5px" }}> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis hic eum esse iure saepe corporis molestiae minima ad! Eveniet recusandae voluptas temporibus. Ipsum ratione, error inventore atque dignissimos deleniti ullam?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, sapiente libero quas corrupti, distinctio ad labore harum fugit possimus architecto, rerum laudantium iusto enim porro.</p>
                 <div className="mt-5 d-flex justify-content-between">
                     <p style={{ color: "darkorange", fontWeight: "700", fontSize: "20px" }}> IDR. 12,398.000  <span style={{ color: "black" }}>/ Person</span></p>
+                   
                     <div className="d-flex">
                         <Image style={{height:"18px", width:"18px", marginRight:"18px", marginTop:"3px", cursor:"pointer"}} src={Minus} />
                         <p style={{marginRight:"18px", display:"inline-block"}}>1</p>
                         <Image style={{height:"18px", width:"18px", marginTop:"3px", cursor:"pointer" }} src={Plus} />
 
                     </div>
+                    
                 </div>
                 <hr></hr>
                 

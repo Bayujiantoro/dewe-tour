@@ -1,0 +1,2 @@
+navbar => operator ternary
+islogin => on submit

@@ -1,31 +1,42 @@
-import Rectangle from "../images/Rectangle-1.png"
+import Reactangle from "../images/Rectangle-1.png"
+import Reactangle2 from "../images/Rectangle-2.png"
+import Reactangle3 from "../images/Rectangle-3.png"
+import Reactangle4 from "../images/Rectangle-4.png"
+import Reactangle5 from "../images/Rectangle-9.png"
 
 export const TourData =[
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "Australia",
         Price : "12,990,000",
-        img : Rectangle
+        img : Reactangle
     },
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "South Korea",
         Price : "8,500,000",
-        img : Rectangle
+        img : Reactangle2
 
     },
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "Japan",
         Price : "4,990,000",
-        img : Rectangle
+        img : Reactangle3
 
     },
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "New Zealand",
         Price : "7,490,000",
-        img : Rectangle
+        img : Reactangle4
+
+    },
+    {
+        title: "6D/4N Fun tassie Vacation Sydney",
+        location: "New Zealand",
+        Price : "7,490,000",
+        img : Reactangle5
 
     }
 ]

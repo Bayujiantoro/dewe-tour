@@ -30,8 +30,8 @@ export default function Home(props) {
             <div className=" bgImg">
 
                 <NavigationBar inLog={loginShow} inReg={registerShow} />
-                <ModalLogin out={loginClose} show={login} />
-                <ModalRegister out={registerClose} show={register} />
+                {/* <ModalLogin out={loginClose} show={login} />
+                <ModalRegister out={registerClose} show={register} /> */}
                 <Tagline />
                 <div style={{ display: "flex", justifyContent: "space-evenly" }}>
                     <Cards img={Guarantine} title="Best Price Guarantee" desc="A small river named. Duren flows by their places and suplies" />

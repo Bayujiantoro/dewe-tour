@@ -7,7 +7,7 @@ export default function TourCard() {
 
 
     return (
-        <div className=" row row-cols-1 row-cols-sm-3 m-0">
+        <div className=" row row-cols-1 row-cols-sm-3 m-auto mb-5" style={{width:"90%"}}>
 
             {
                 TourData.map((item, index) => (
@@ -20,7 +20,7 @@ export default function TourCard() {
 
                                 <p style={{ fontSize: "20px", fontWeight: "700" }}>{item.title}</p>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "18px" }}>IDR. {item.price}</p>
+                                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "18px" }}>IDR. {item.Price}</p>
                                     <p style={{ color: "grey", fontWeight: "500", marginRight: "30px" }}>{item.location}</p>
                                 </div>
 
