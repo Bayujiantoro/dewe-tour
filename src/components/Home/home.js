@@ -14,7 +14,8 @@ import Heart from "../images/heart 1.png"
 import Agent from "../images/agent1.png"
 import ReactAngel from "../images/Rectangle8.png"
 
-export default function Home(props) {
+export default function Home() {
+    
     const [login, setLogin] = useState(false);
     const [register, setRegister] = useState(false);
 
@@ -30,8 +31,6 @@ export default function Home(props) {
             <div className=" bgImg">
 
                 <NavigationBar inLog={loginShow} inReg={registerShow} />
-                {/* <ModalLogin out={loginClose} show={login} />
-                <ModalRegister out={registerClose} show={register} /> */}
                 <Tagline />
                 <div style={{ display: "flex", justifyContent: "space-evenly" }}>
                     <Cards img={Guarantine} title="Best Price Guarantee" desc="A small river named. Duren flows by their places and suplies" />
@@ -41,7 +40,7 @@ export default function Home(props) {
                 </div>
                 <h1 style={{ textAlign: "center", marginTop: " 50px", marginBottom: "50px" }}>Group Text</h1>
                 <div >
-                    <TourCard />
+                    <TourCard  />
 
                 </div>
 

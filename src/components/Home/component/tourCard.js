@@ -2,9 +2,12 @@ import Card from 'react-bootstrap/Card';
 import { useParams } from 'react-router';
 
 import { TourData } from '../../fake-data/dummy';
-
+import { Button } from 'react-bootstrap';
 
 export default function TourCard() {
+    
+    
+    
 
 
     return (
@@ -20,10 +23,12 @@ export default function TourCard() {
                             <div style={{ marginBottom: "30px", marginLeft: "10px", marginTop:"10px"}}>
 
                                 <p style={{ fontSize: "20px", fontWeight: "700" }}>
-                                    <a href={`/detail/${item.id}`} className='text'>
+                                    <a href={`detail/${item.id}`}  className='text'>
                                         {item.title}
                                     </a>
                                 </p>
+
+                                {/* <button style={{border:"none", backgroundColor:"white", fontSize: "20px", fontWeight: "700" }} onClick={toHref(item.id)}>{item.title}</button> */}
 
 
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>

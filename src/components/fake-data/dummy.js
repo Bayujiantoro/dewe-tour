@@ -8,39 +8,39 @@ export const TourData =[
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "Australia",
-        Price : "12,990,000",
+        Price : 8000000,
         img : Reactangle,
-        id : 1
+        id : "1"
     },
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "South Korea",
-        Price : "8,500,000",
+        Price : 5000000,
         img : Reactangle2,
-        id: 2
+        id: "2"
 
     },
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "Japan",
-        Price : "4,990,000",
+        Price : 10599000,
         img : Reactangle3,
-        id : 3
+        id : "3"
     },
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "New Zealand",
-        Price : "7,490,000",
+        Price : 11500000,
         img : Reactangle4 ,
-        id :4
+        id : "4"
 
     },
     {
         title: "6D/4N Fun tassie Vacation Sydney",
         location: "New Zealand",
-        Price : "7,490,000",
+        Price : 9750000,
         img : Reactangle5,
-        id : 5
+        id : "5"
 
     }
 ]

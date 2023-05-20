@@ -15,12 +15,13 @@ function ModalRegister({ show, outModal, inLogin }) {
     setData({
       ...data,
       [e.target.name]: e.target.value,
+
     });
   }
 
   const HandleSubmit = (e) => {
     e.preventDefault()
-    console.log(e)
+    console.log(data)
     outModal()
     inLogin()
   }

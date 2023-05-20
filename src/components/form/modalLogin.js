@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import { Admin } from '../fake-data/admin';
 
 import Modal from 'react-bootstrap/Modal';
 
@@ -8,19 +9,36 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
     email: "",
     password: "",
   });
+  const [adminValidation, setAdminValidation] = useState(false)
+
+  const validation = () => setAdminValidation(true)
 
   function handleOnChange(e) {
     setData({
       ...data,
       [e.target.name]: e.target.value,
+      
     });
   }
 
   const HandleSubmit = (e) => {
     e.preventDefault()
-    console.log("sdafetwqtre")
+    console.log(Admin)
 
-    console.log(e)
+    console.log(data)
+    
+
+    // if(data.email === Admin.email && data.password === Admin.password ) {
+    //   validation() 
+    // }
+
+    if( data.email == "admin45@gmail.com") {
+      validation()
+      console.log("sama")
+    }
+
+    console.log(adminValidation)
+    
     chgNavbar()
     outModal()
     
@@ -52,7 +70,7 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
           <Form.Control type="email" style={{ height: "45px" }} name='email' value={data.email} onChange={handleOnChange}/>
 
           <label className='fs-4 fw-bold mt-5'>Password</label >
-          <Form.Control type="password" style={{ height: "45px", marginBottom: "30px", }} />
+          <Form.Control type="password" style={{ height: "45px", marginBottom: "30px", }} name='password' value={data.password} onChange={handleOnChange} />
 
           <button type="submit" className="btn btn-orange" style={{ borderRadius: "3px", width: "100%" }}> LOGIN </button>
           <p className='text-center mt-3' style={{ color: "grey" }}>Don't Have Account ? Click<span className='fw-bold'>  Here </span></p>
