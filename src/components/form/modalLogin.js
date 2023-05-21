@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { Admin } from '../fake-data/admin';
 
 import Modal from 'react-bootstrap/Modal';
 
@@ -9,6 +8,8 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
     email: "",
     password: "",
   });
+
+  console.log(localStorage.getItem("admin"))
   const [adminValidation, setAdminValidation] = useState(false)
 
   const validation = () => setAdminValidation(true)
@@ -23,28 +24,20 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
 
   const HandleSubmit = (e) => {
     e.preventDefault()
-    console.log(Admin)
 
-    console.log(data)
-    
-
-    // if(data.email === Admin.email && data.password === Admin.password ) {
-    //   validation() 
-    // }
-
-    if( data.email == "admin45@gmail.com") {
+    if( data.email === "admin45@gmail.com") {
       validation()
-      console.log("sama")
+      // alert("admin")
+      localStorage.setItem("admin", "isAdmin")
+      
+      window.location.href = '/list-transaction';
+    } else {
+      localStorage.setItem("admin", "noAdmin")
     }
-
-    console.log(adminValidation)
     
     chgNavbar()
     outModal()
-    
   }
-  
-  
 
   return (
     <>

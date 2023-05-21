@@ -1,32 +1,40 @@
 import "./components/style/bg.css"
 import Home from "./components/Home/home"
 import Detail from "./components/Detail-pages/detail";
-import Boking from "./components/booking/booking"
-import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Payment from "./components/payment/payment"
 import ListTransaction from "./components/admin-page/list-transaction";
 import Profile from "./components/profile/profile";
-
-
-import { useParams } from "react-router-dom";
-
-
-
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, redirect as Redirect } from "react-router-dom"
+import React from "react";
+import PrivateRoute from "./components/privateRoute";
+import PrivateLogin from "./components/privateLogin";
 
 
 
 function App() {
-  const id = useParams()
+  // const { id, qty } = useParams()
+ console.log(localStorage.getItem("admin"))
 
-  
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/detail/:id" element={<Detail />}/>
-        <Route path="/payment" element={<Boking/>}/>
-        <Route path="/list-transaction" element={<ListTransaction/>}/>
-        <Route path="/profile" element={<Profile/>} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/detail/:id" element={<Detail />} />
+        <Route exact path="/payment/:id/:qty" element={<Payment />} />
+        <Route exact path="/profile/:id/:qty" element={<Profile />} />
+
+        <Route exact path="/" element={<PrivateRoute />} >
+          <Route exact path="/list-transaction" element={<ListTransaction />} />
+        </Route>
+
+          {/* <Route exact path="/profile" element={<Profile />} /> */}
+
+
+        {/* <Route path="/list-transaction" element={<ListTransaction />} /> */}
+
+
 
       </Routes>
     </Router>

@@ -7,6 +7,8 @@ import iconMap from "../images/icon-map.png"
 
 
 export default function Personal() {
+
+    
     return (
         <div className=" m-auto pb-3 rounded bg-white my-5" style={{ width: "50%" }}>
 

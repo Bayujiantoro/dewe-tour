@@ -35,6 +35,10 @@
     border-color: white !important;
 }
 
+.bg-transparant {
+    background-color: rgba(0,0,0,0)!important;
+}
+
 .text{
     text-decoration: none!important;
     color: black;

@@ -4,6 +4,7 @@ import Footer from "../Footer/footer"
 
 export default function Detail(){
     
+    
     return(
         <div className="bgColor">
             <NavLog/>

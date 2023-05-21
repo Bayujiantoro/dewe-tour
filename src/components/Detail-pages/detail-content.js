@@ -13,13 +13,11 @@ import Time from "../images/calendar1.png"
 import Minus from "../images/Minus.png"
 import Plus from "../images/Plus.png"
 import { TourData } from "../fake-data/dummy";
-import { useEffect } from "react";
 
 
 
 export default function DetailContaint() {
     const {id} = useParams()
-    console.log(id)
 
     const data = TourData.find((item)=> item.id === id )
     
@@ -39,6 +37,8 @@ export default function DetailContaint() {
         setQty((data) => data + 1)
         // setPrice((data) => data - 1)
     }
+
+    
 
     return (
 
@@ -79,10 +79,16 @@ export default function DetailContaint() {
                 </div>
                 <hr></hr>
                 <div className=" d-flex justify-content-end">
-                    <a href="/payment">
+                    {/* <a href={`/payment/${data.id}/${qty}`}>
 
-                        <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }}> BOOK NOW </button>
-                    </a>
+                    </a> */}
+                        <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={()=>{
+                            if (localStorage.getItem("admin") === null ) {
+                                alert('Silahkan Login Terlebih Dahulu !!!')
+                            } else {
+                                window.location.href = `/payment/${data.id}/${qty}`
+                            }
+                        }}> BOOK NOW </button>
                 </div>
 
             </div>

@@ -1,9 +1,14 @@
 import { Image } from "react-bootstrap"
 import Logo from "../images/logo-black.png"
 import Barcode from "../images/Barcode.png"
+import { TourData } from "../fake-data/dummy"
 
 
-export default function HistoryTrip() {
+export default function HistoryTrip({id,qty}) {
+
+    const data = TourData.find((item)=> item.id === id )
+    
+    
     return (
         <div className="m-auto" style={{ width: '75%' }}>
             <p className="fs-3 fw-bold"> History Trip</p>
@@ -36,8 +41,8 @@ export default function HistoryTrip() {
                     </div>
                     <div className='row row-cols-1 row-cols-sm-3 m-auto' style={{ width: "90%" }}>
                         <div className=''>
-                            <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>6D/4N Fun tassie Vacation Sydney</p>
-                            <p style={{ color: "grey", marginTop: "0!important" }}>Australia</p>
+                            <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>{data.title}</p>
+                            <p style={{ color: "grey", marginTop: "0!important" }}>{data.location}</p>
                             <p className='mt-5' style={{ backgroundColor: "aliceBlue", fontWeight: "500", color: "Green", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>Waiting Payment</p>
 
                         </div>
@@ -89,7 +94,7 @@ export default function HistoryTrip() {
                                     <td>Male</td>
                                     <td>8745565878</td>
                                     <th scope='row'> Qty</th>
-                                    <th scope='row'> :  1</th>
+                                    <th scope='row'> :  {qty}</th>
                                 </tr>
                                 <tr>
                                     {/* <th scope="row">1</th> */}
@@ -98,7 +103,7 @@ export default function HistoryTrip() {
                                     <td></td>
                                     <td></td>
                                     <th scope='row'> Total</th>
-                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. 12,679.000</span></th>
+                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data.Price * qty}</span></th>
                                 </tr>
 
                             </tbody>

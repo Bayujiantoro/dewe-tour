@@ -1,6 +1,8 @@
 import Image from 'react-bootstrap/Image'
 import Logo from "../images/logo-black.png"
 import UploadImg from "../images/Upload.png"
+import { useParams } from 'react-router'
+import { TourData } from '../fake-data/dummy'
 
 import Button from 'react-bootstrap/Button'
 
@@ -9,6 +11,13 @@ import Button from 'react-bootstrap/Button'
 
 
 export default function BoContent() {
+    const {id, qty } = useParams()
+
+    const data = TourData.find((item)=> item.id === id )
+
+    console.log(data)
+
+
     return (
         <div>
 
@@ -25,8 +34,8 @@ export default function BoContent() {
             </div>
             <div className='row row-cols-1 row-cols-sm-3 m-auto' style={{ width: "90%" }}>
                 <div className=''>
-                    <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>6D/4N Fun tassie Vacation Sydney</p>
-                    <p style={{ color: "grey", marginTop: "0!important" }}>Australia</p>
+                    <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>{data.title}</p>
+                    <p style={{ color: "grey", marginTop: "0!important" }}>{data.location}</p>
                     <p className='mt-5' style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>Waiting Payment</p>
 
                 </div>
@@ -78,7 +87,7 @@ export default function BoContent() {
                             <td>Male</td>
                             <td>8745565878</td>
                             <th scope='row'> Qty</th>
-                            <th scope='row'> :  1</th>
+                            <th scope='row'> :  {qty}</th>
                         </tr>
                         <tr>
                             {/* <th scope="row">1</th> */}
@@ -87,7 +96,7 @@ export default function BoContent() {
                             <td></td>
                             <td></td>
                             <th scope='row'> Total</th>
-                            <th scope='row'> :  <span style={{ color: "red" }}>IDR. 12,679.000</span></th>
+                            <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data.Price * qty}</span></th>
                         </tr>
 
                     </tbody>
@@ -96,36 +105,14 @@ export default function BoContent() {
             
         </div>
         <div style={{ width: "70%", margin: "auto"}} className='d-flex justify-content-end mt-4 mb-5'>
+            <a href={`/profile/${data.id}/${qty}`}>
 
         <Button className='btn btn-outline-dark ' style={{ color: "white", width:"150px", backgroundColor:"darkorange"}} >Pay</Button>{' '}
+            </a>
+
         </div>
         
         </div>
     )
 }
 
-
-     {/* <div style={{ width: "90%", margin: "auto", marginBottom: "0" }} className=''>
-
-                <div className='d-flex justify-content-between' style={{ width: "60%" }}>
-                    <p className='fw-3 fs-6 fw-bold'>No</p>
-                    <p className='fw-3 fs-6 fw-bold'>FullName</p>
-                    <p className='fw-3 fs-6 fw-bold'>Gender</p>
-                    <p className='fw-3 fs-6 fw-bold'>Phone</p>
-                </div>
-            </div>
-            <hr className='my-0'></hr>
-
-            <div style={{ width: "90%", margin: "auto", marginBottom: "0" }} className='mt-2'>
-
-                <div className='d-flex justify-content-between' style={{ width: "66%" }}>
-                    <p className='fw-3 fs-6 fw-semibold' style={{color:"grey"}} >1</p>
-                    <p className='fw-3 fs-6 fw-semibold' style={{color:"grey"}}>C Ronaldo</p>
-                    <p className='fw-3 fs-6 fw-semibold' style={{color:"grey"}}>Male</p>
-                    <p className='fw-3 fs-6 fw-semibold' style={{color:"grey"}}>0763411435252</p>
-                </div>
-                <div>
-                    <p className='fw-3 fs-6 fw-bold'>Qty</p>
-                    <p className='fw-3 fs-6 fw-bold'>:</p>
-                </div>
-            </div> */}

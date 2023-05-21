@@ -2,7 +2,7 @@ import NavLog from "../Navbar/navbarLogin";
 import Footer from "../Footer/footer";
 import  BoContent from "./boContent";
 
-function Boking(){
+function Payment(props){
     return (
         <div className="bgColor">
             <NavLog/>
@@ -13,4 +13,4 @@ function Boking(){
     )
 }
 
-export default Boking;
+export default Payment;

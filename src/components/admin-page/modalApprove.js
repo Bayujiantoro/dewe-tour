@@ -1,65 +1,13 @@
-import NavLog from "../Navbar/navbarLogin"
-import Footer from "../Footer/footer"
-// import Image from 'react-bootstrap/Image'
-import SearchIcon from "../images/search.png"
-import { TourData } from "../fake-data/dummy"
-
 import { Button, Image } from "react-bootstrap"
 import UploadImg from "../images/Upload.png"
 import Logo from "../images/logo.png"
 
 // import ModalApprove from "./modalApprove"
 
+export default function ModalApprove() {
 
-
-export default function ListTransaction() {
     return (
-        <div className="bgColor">
-            <NavLog />
-            <div className="container ">
-                <p className="fs-3 fw-bold mt-5">Incoming Transaction</p>
-                <table class="table bg-white mb-5 table-hover">
-                    <thead className="table-list-transaction" >
-
-                        <tr >
-                            <th scope="col">No</th>
-                            <th scope="col">Users</th>
-                            <th scope="col">Trip</th>
-                            <th scope="col">Bukti Transfer</th>
-                            <th scope="col">Status Payment</th>
-                            <th scope="col">Action</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        {TourData.map((item, index) => (
-
-                            <tr data-bs-toggle="modal" data-bs-target="#exampleModal">
-
-                                <td>{item.id}</td>
-                                <td>C Ronaldo</td>
-                                <td>{item.title}</td>
-                                <td>BCA</td>
-                                <td>Pending</td>
-                                <td>
-                                    <Image src={SearchIcon} />
-
-                                </td>
-                            </tr>
-                        ))}
-
-
-                    </tbody>
-                </table>
-
-
-
-
-
-
-                <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog " >
+            <div class="modal-dialog " >
                 <div class="modal-content bg-transparant" >
                     <div class="modal-body">
 
@@ -164,9 +112,6 @@ export default function ListTransaction() {
                     </div>
                 </div>
             </div>
-                </div>
-            </div>
-            <Footer />
-        </div>
+        
     )
 }
