@@ -21,7 +21,7 @@ export default function DetailContaint() {
 
     const data = TourData.find((item)=> item.id === id )
     
-    // const defaultPrice = 8500000
+    
     
     const [qty, setQty] = useState(1)
     const [price, setPrice] = useState(data.Price)
@@ -30,12 +30,10 @@ export default function DetailContaint() {
 
             setQty((prev) => prev - 1)
         }
-        // setPrice((item)=> item - 1)
     }
 
     const HandlePlus = () => {
         setQty((data) => data + 1)
-        // setPrice((data) => data - 1)
     }
 
     
@@ -79,9 +77,6 @@ export default function DetailContaint() {
                 </div>
                 <hr></hr>
                 <div className=" d-flex justify-content-end">
-                    {/* <a href={`/payment/${data.id}/${qty}`}>
-
-                    </a> */}
                         <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={()=>{
                             if (localStorage.getItem("admin") === null ) {
                                 alert('Silahkan Login Terlebih Dahulu !!!')

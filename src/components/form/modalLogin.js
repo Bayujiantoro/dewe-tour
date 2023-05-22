@@ -9,7 +9,6 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
     password: "",
   });
 
-  console.log(localStorage.getItem("admin"))
   const [adminValidation, setAdminValidation] = useState(false)
 
   const validation = () => setAdminValidation(true)
@@ -26,13 +25,14 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
     e.preventDefault()
 
     if( data.email === "admin45@gmail.com") {
-      validation()
+      // validation()
       // alert("admin")
       localStorage.setItem("admin", "isAdmin")
       
-      window.location.href = '/list-transaction';
+      window.location.href = '/income-trip';
     } else {
       localStorage.setItem("admin", "noAdmin")
+      
     }
     
     chgNavbar()

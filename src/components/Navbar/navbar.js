@@ -23,13 +23,13 @@ function NavigationBar(props) {
   const [changeNav, setChangeNav] = useState(false)
 
   const NavIcon = () => { setChangeNav(true) }
-  const NavLogin = () => { setChangeNav(false)  }
-  
-  const ModalShowLogin = () => { setIsLogin(true);}
+  const NavLogin = () => { setChangeNav(false) }
+
+  const ModalShowLogin = () => { setIsLogin(true); }
   const ModalOutLogin = () => { setIsLogin(false) }
 
-  const ModalShowReg = () => { setRegister(true)}
-  const ModalOutReg = () => { setRegister(false)}
+  const ModalShowReg = () => { setRegister(true) }
+  const ModalOutReg = () => { setRegister(false) }
 
   const auth = localStorage.getItem('admin')
 
@@ -44,32 +44,45 @@ function NavigationBar(props) {
     <div>
       <Navbar>
         <Container>
-          <Image src={Logo} />
+          <a href='/'>
+
+            <Image src={Logo} />
+          </a>
           <Navbar.Collapse className="justify-content-end" >
 
             {auth === "noAdmin" || auth === "isAdmin" ? (
               <Dropdown>
-              <Dropdown.Toggle variant="" id="dropdown-basic" style={{border:"none"}}>
-                <Image src={icon} />
-              
-              </Dropdown.Toggle>
-        
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Pay</Dropdown.Item>
-                <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            ):(<Stack direction="horizontal" gap={3}>
-            <Button className='bt-transparant btn-size' onClick={ModalShowLogin}>   Login   </Button>{' '}
-            <Button variant="warning" style={{ color: "white" }} onClick={ModalShowReg}>Register</Button>{' '}
-          </Stack>)}
+                <Dropdown.Toggle variant="" id="dropdown-basic" style={{ border: "none" }}>
+                  <Image src={icon} />
+
+                </Dropdown.Toggle>
+                {auth === "noAdmin" ? (
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Pay</Dropdown.Item>
+                    <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
+                  </Dropdown.Menu>
+                ) : (
+                  <div>
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1">Trip</Dropdown.Item>
+                      <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
+                    </Dropdown.Menu>
+
+                  </div>
+                )}
+              </Dropdown>
+            ) : (<Stack direction="horizontal" gap={3}>
+              <Button className='bt-transparant btn-size' onClick={ModalShowLogin}>   Login   </Button>{' '}
+              <Button variant="warning" style={{ color: "white" }} onClick={ModalShowReg}>Register</Button>{' '}
+            </Stack>)}
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      <ModalLogin outModal={ModalOutLogin} showModal={isLogin} chgNavbar={NavIcon}/>
-      <ModalRegister outModal={ModalOutReg} show={register} inLogin={ModalShowLogin}/>
+      <ModalLogin outModal={ModalOutLogin} showModal={isLogin} chgNavbar={NavIcon} />
+      <ModalRegister outModal={ModalOutReg} show={register} inLogin={ModalShowLogin} />
     </div>
 
   );

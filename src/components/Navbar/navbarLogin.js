@@ -38,7 +38,10 @@ function NavLog() {
   return (
     <Navbar className='bgNav'>
       <Container>
+        <a href='/'>
+
         <Image src={Logo} />
+        </a>
         <Navbar.Collapse className="justify-content-end" >
           { auth === "noAdmin" || auth === "isAdmin" ? (
 
