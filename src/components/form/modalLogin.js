@@ -29,7 +29,7 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
       // alert("admin")
       localStorage.setItem("admin", "isAdmin")
       
-      window.location.href = '/income-trip';
+      window.location.href = '/list-transaction';
     } else {
       localStorage.setItem("admin", "noAdmin")
       

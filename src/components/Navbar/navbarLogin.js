@@ -52,12 +52,22 @@ function NavLog() {
                 <Image src={Ellipse} />
               
               </Dropdown.Toggle>
-        
+
+              {auth === "noAdmin" ? (
+                
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Pay</Dropdown.Item>
+                <Dropdown.Item href="">Profile</Dropdown.Item>
+                <Dropdown.Item href="">Pay</Dropdown.Item>
                 <Dropdown.Item href="#/action-3" onClick={logOut}>Log Out</Dropdown.Item>
               </Dropdown.Menu>
+              ):(
+              <Dropdown.Menu>
+                <Dropdown.Item href="/income-trip">Trip</Dropdown.Item>
+                <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
+              </Dropdown.Menu>
+
+              )}
+        
             </Dropdown>
           </Stack>
           ): (
