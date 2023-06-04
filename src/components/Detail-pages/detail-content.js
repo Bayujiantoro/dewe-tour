@@ -14,17 +14,28 @@ import Minus from "../images/Minus.png"
 import Plus from "../images/Plus.png"
 import { TourData } from "../fake-data/dummy";
 
+import { useQuery } from "react-query";
+import { API } from "../../config/api";
+
 
 
 export default function DetailContaint() {
     const {id} = useParams()
 
     const data = TourData.find((item)=> item.id === id )
+
+    const {data: getTrip} = useQuery('tripChace', async () => {
+        const response = await API.get(`/trip/${id}`);
+        console.log(response.data.Data)
+        return response.data.Data
+    })
+
+    console.log("fetch", getTrip?.Price)
     
     
     
     const [qty, setQty] = useState(1)
-    const [price, setPrice] = useState(data.Price)
+
     const HandleMinus = () => {
         if(qty > 1 ) {
 
@@ -43,21 +54,22 @@ export default function DetailContaint() {
         <div>
 
             <div className="container my-5 ps-5 " style={{ width: "80%" }}>
-                <h1 className="fw-bold">{data.title}</h1>
-                <p style={{ color: "grey", fontSize: "20px" }} className="fw-semibold">{data.location}</p>
-                <Carosl />
+                <h1 className="fw-bold">{getTrip?.Title}</h1>
+                <p style={{ color: "grey", fontSize: "20px" }} className="fw-semibold">{getTrip?.Country?.Name}</p>
+                <Carosl Image= {getTrip?.Image}/>
                 <p className="fw-bold fs-4 mt-5">Information Trip</p>
                 <div className="row row-cols-1 row-cols-sm-5">
-                    <TripInfo imag={Hotel} tag={"Accommodation"} info={"Hotel 4 Nights"} />
-                    <TripInfo imag={vector3} tag={"Transportation"} info={"Qatar Airways"} />
-                    <TripInfo imag={Eat} tag={"Eat"} info={"Include As Itenarary"} />
-                    <TripInfo imag={Clock} tag={"Duration"} info={"6 Day 4 Nights"} />
+                    <TripInfo imag={Hotel} tag={"Accommodation"} info={getTrip?.Accomodation} />
+                    <TripInfo imag={vector3} tag={"Transportation"} info={getTrip?.Transportation} />
+                    <TripInfo imag={Eat} tag={"Eat"} info={getTrip?.Eat} />
+                    {/* <TripInfo imag={Clock} tag={"Duration"} info={"6 Day 4 Nights"} /> */}
+                    <TripInfo imag={Clock} tag={"Duration"} info={`${getTrip?.Day} Day ${getTrip?.Night} Night`} />
                     <TripInfo imag={Time} tag={"Date"} info={"26 Agustus 2024"} />
                 </div>
                 <p className="fw-bold fs-4 mt-5">Description</p>
-                <p style={{ color: "grey", fontSize: "13px", fontWeight: "600", marginBottom: "5px" }}> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis hic eum esse iure saepe corporis molestiae minima ad! Eveniet recusandae voluptas temporibus. Ipsum ratione, error inventore atque dignissimos deleniti ullam?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, sapiente libero quas corrupti, distinctio ad labore harum fugit possimus architecto, rerum laudantium iusto enim porro.</p>
+                <p style={{ color: "grey", fontSize: "13px", fontWeight: "600", marginBottom: "5px" }}>{getTrip?.Description}</p>
                 <div className="mt-5 d-flex justify-content-between">
-                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "20px" }}> IDR. {data.Price}  <span style={{ color: "black" }}>/ Person</span></p>
+                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "20px" }}> IDR. {getTrip?.Price}  <span style={{ color: "black" }}>/ Person</span></p>
 
                     <div className="d-flex">
                         <Image style={{ height: "18px", width: "18px", marginRight: "18px", marginTop: "3px", cursor: "pointer" }} src={Minus} onClick={HandleMinus} />
@@ -72,16 +84,17 @@ export default function DetailContaint() {
                 <div className=" d-flex justify-content-between">
                     <p style={{ fontWeight: "700", fontSize: "20px" }} > Total : </p>
                     <div className="d-flex">
-                        <p style={{ fontWeight: "700", fontSize: "20px", color: "darkorange" }}> IDR. {data.Price * qty} </p>
+                        <p style={{ fontWeight: "700", fontSize: "20px", color: "darkorange" }}> IDR. {getTrip?.Price * qty} </p>
                     </div>
                 </div>
                 <hr></hr>
                 <div className=" d-flex justify-content-end">
                         <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={()=>{
                             if (localStorage.getItem("admin") === null ) {
+                                window.scrollTo(500, 0);
                                 alert('Silahkan Login Terlebih Dahulu !!!')
                             } else {
-                                window.location.href = `/payment/${data.id}/${qty}`
+                                window.location.href = `/payment/${getTrip?.ID}/${qty}`
                             }
                         }}> BOOK NOW </button>
                 </div>

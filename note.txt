@@ -47,7 +47,29 @@ lifecycle function
 
 
 
+Golang 
+Day 1
+Newencoder => mengirimkan data sebagai Json
 
+Orm => object relation Mapping => tidak perlu melakukan Query , Hasil sudah langsung di konversi menjadi object
+gorm =>
 
+instal gorm
+instal driver mysql
+instal playground valldatorr
 
+rest => sekumpulan aturan
+dto => data transfer object
+
+Flow 
+Main => routes => handler => repo => db
+
+Day 2
+Belongs to = > Untuk Belong To sendiri menyiapkan koneksi one to one dengan model lain, sehingga setiap instance dari model yang mendeklarasikan “belong” satu instance dari model lain. butuh primary key dari table yang brerhubungan
+
+Has One => asosiasi mengatur koneksi satu-ke-satu dengan model lain, tetapi dengan semantik bisa berdiri sendiri
+
+Has Many => A memiliki banyak asosiasi mengatur koneksi satu-ke-banyak dengan model lain, tidak seperti memiliki satu, pemilik dapat memiliki nol atau banyak contoh model.
+
+many to many => 
 

@@ -1,9 +1,10 @@
 import Image from 'react-bootstrap/Image';
-import ReactAngel from "../images/Rectangle8.png"
+// import ReactAngel from "../images/Rectangle8.png"
 
 
 
-export default function Carosl() {
+export default function Carosl(props) {
+    console.log(props.Image)
     return (
         <div id="carouselExampleIndicators" className="carousel slide m-auto" style={{width:"100%"}}>
             <div className="carousel-indicators">
@@ -14,16 +15,16 @@ export default function Carosl() {
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     {/* <img src="..." className="d-block w-100" alt="..."> */}
-                    <Image src={ReactAngel} className="d-block w-100" alt='...' />
+                    <Image src={props.Image} className="d-block w-100" alt='...' />
                 </div>
                 <div className="carousel-item">
                     {/* <img src="..." className="d-block w-100" alt="..."> */}
-                    <Image src={ReactAngel} className="d-block w-100" alt='...' />
+                    <Image src={props.Image} className="d-block w-100" alt='...' />
 
                 </div>
                 <div className="carousel-item">
                     {/* <img src="..." className="d-block w-100" alt="..."> */}
-                    <Image src={ReactAngel} className="d-block w-100" alt='...' />
+                    <Image src={props.Image} className="d-block w-100" alt='...' />
 
                 </div>
             </div>

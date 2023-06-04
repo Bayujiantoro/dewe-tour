@@ -5,16 +5,29 @@ import Payment from "./components/payment/payment"
 import ListTransaction from "./components/admin-page/list-transaction";
 import Profile from "./components/profile/profile";
 import { BrowserRouter as Router, Routes, Route, redirect as Redirect } from "react-router-dom"
-import React from "react";
+import React, { useState } from "react";
 import PrivateRoute from "./components/privateRoute";
 import AddTrip from "./components/admin-page/add-trip";
 import IncomeTrip from "./components/admin-page/income-trip";
 import PrivateLogin from "./components/privateLogin";
 
+import { API, setAuthToken } from "./config/api";
+import { UserContext } from "./context/userContext";
+import { useContext } from "react";
+
+
 
 
 function App() {
-  console.log(localStorage.getItem("admin"))
+  // const [state, dispatch] = useContext(UserContext)
+  // const [isLoading, setIsLoading] = useState(true)
+
+  // const checkUser = async () => {
+  //   try{
+  //     const response = await API.get
+  //   }
+  // }
+
 
 
   return (

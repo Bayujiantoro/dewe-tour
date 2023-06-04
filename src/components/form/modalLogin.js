@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
+import { useMutation } from 'react-query';
+import { API } from '../../config/api';
+
 import Modal from 'react-bootstrap/Modal';
 
 function ModalLogin({outModal,showModal,chgNavbar}) {
@@ -9,9 +12,6 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
     password: "",
   });
 
-  const [adminValidation, setAdminValidation] = useState(false)
-
-  const validation = () => setAdminValidation(true)
 
   function handleOnChange(e) {
     setData({
@@ -21,23 +21,36 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
     });
   }
 
-  const HandleSubmit = (e) => {
-    e.preventDefault()
-
-    if( data.email === "admin45@gmail.com") {
-      // validation()
-      // alert("admin")
-      localStorage.setItem("admin", "isAdmin")
-      
-      window.location.href = '/list-transaction';
-    } else {
-      localStorage.setItem("admin", "noAdmin")
-      
-    }
+  const HandleSubmit = useMutation(async (e) => {
     
-    chgNavbar()
-    outModal()
-  }
+    try {
+      e.preventDefault()
+      const response = await API.post("/login", data);
+      console.log('Login succes : ', response)
+      
+      if( data.email === "admin45@gmail.com") {
+        localStorage.setItem("admin", "isAdmin")
+        
+        window.location.href = '/list-transaction';
+      } else {
+        localStorage.setItem("admin", "noAdmin")
+        
+      }
+      
+      alert("Login success")
+      setData({
+        email: "",
+        password: "",
+      })
+
+      chgNavbar()
+      outModal()
+    } catch (error) {
+      alert("Login Failed ")
+      console.log("login failed : ", error)
+    }
+
+  })
 
   return (
     <>
@@ -53,17 +66,17 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
 
         <Modal.Body style={{width:"90%"}} className='m-auto' >
         
-          <Form onSubmit={HandleSubmit}>
+          <Form onSubmit={(e) => HandleSubmit.mutate(e)}>
           <div className='mt-5 fs-1 fw-bold'>
             <p className='text-center'> Login </p>
 
           </div>
 
           <label className='fs-4 fw-bold'>Login</label >
-          <Form.Control type="email" style={{ height: "45px" }} name='email' value={data.email} onChange={handleOnChange}/>
+          <Form.Control type="email" style={{ height: "45px" }} name='email' value={data.email} onChange={handleOnChange} required/>
 
           <label className='fs-4 fw-bold mt-5'>Password</label >
-          <Form.Control type="password" style={{ height: "45px", marginBottom: "30px", }} name='password' value={data.password} onChange={handleOnChange} />
+          <Form.Control type="password" style={{ height: "45px", marginBottom: "30px", }} name='password' value={data.password} onChange={handleOnChange} required />
 
           <button type="submit" className="btn btn-orange" style={{ borderRadius: "3px", width: "100%" }}> LOGIN </button>
           <p className='text-center mt-3' style={{ color: "grey" }}>Don't Have Account ? Click<span className='fw-bold'>  Here </span></p>

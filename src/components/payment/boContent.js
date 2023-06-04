@@ -2,9 +2,11 @@ import Image from 'react-bootstrap/Image'
 import Logo from "../images/logo-black.png"
 import UploadImg from "../images/Upload.png"
 import { useParams } from 'react-router'
-import { TourData } from '../fake-data/dummy'
 
 import Button from 'react-bootstrap/Button'
+
+import { useQuery } from "react-query";
+import { API } from "../../config/api";
 
 
 // import { Tour } from '../fake-data/dummy'
@@ -13,9 +15,11 @@ import Button from 'react-bootstrap/Button'
 export default function BoContent() {
     const {id, qty } = useParams()
 
-    const data = TourData.find((item)=> item.id === id )
-
-    console.log(data)
+    const {data: getTrip} = useQuery('tripChace', async () => {
+        const response = await API.get(`/trip/${id}`);
+        console.log(response.data.Data)
+        return response.data.Data
+    })
 
 
     return (
@@ -34,8 +38,8 @@ export default function BoContent() {
             </div>
             <div className='row row-cols-1 row-cols-sm-3 m-auto' style={{ width: "90%" }}>
                 <div className=''>
-                    <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>{data.title}</p>
-                    <p style={{ color: "grey", marginTop: "0!important" }}>{data.location}</p>
+                    <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>title</p>
+                    <p style={{ color: "grey", marginTop: "0!important" }}>location</p>
                     <p className='mt-5' style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>Waiting Payment</p>
 
                 </div>
@@ -45,16 +49,16 @@ export default function BoContent() {
                         <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
                     </div>
                     <div>
-                        <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                        <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Duration</p>
+                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{`${getTrip?.Day} Day ${getTrip?.Night} Night`}</p>
                     </div>
                     <div>
-                        <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                        <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Accomodation</p>
+                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{getTrip?.Accomodation}</p>
                     </div>
                     <div>
-                        <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                        <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Transportation</p>
+                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{getTrip?.Transportation}</p>
                     </div>
                 </div>
                 <div className=' d-flex justify-content-end'>
@@ -96,7 +100,7 @@ export default function BoContent() {
                             <td></td>
                             <td></td>
                             <th scope='row'> Total</th>
-                            <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data.Price * qty}</span></th>
+                            <th scope='row'> :  <span style={{ color: "red" }}>IDR. total</span></th>
                         </tr>
 
                     </tbody>
@@ -105,7 +109,7 @@ export default function BoContent() {
             
         </div>
         <div style={{ width: "70%", margin: "auto"}} className='d-flex justify-content-end mt-4 mb-5'>
-            <a href={`/profile/${data.id}/${qty}`}>
+            <a href='#'>
 
         <Button className='btn btn-outline-dark ' style={{ color: "white", width:"150px", backgroundColor:"darkorange"}} >Pay</Button>{' '}
             </a>

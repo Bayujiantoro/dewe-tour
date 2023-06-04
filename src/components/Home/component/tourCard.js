@@ -1,23 +1,36 @@
 import Card from 'react-bootstrap/Card';
 import { useParams } from 'react-router';
+import { useEffect, useState } from 'react';
 
 import { TourData } from '../../fake-data/dummy';
 import { Button } from 'react-bootstrap';
 
-export default function TourCard() {
-    
-    
-    
+import { useQuery } from 'react-query';
+import { API } from '../../../config/api';
 
+export default function TourCard() {
+    const [fetchTrip, setFetchTrip] = useState(null)
+    const local = JSON.parse(localStorage.getItem("tourdata"))
+        if (local === !null) {
+            TourData.push(local)    
+        }
+        
+    const {data: Trip} = useQuery('tripChace', async () => {
+        const response = await API.get('/trip');
+        return response.data.Data
+    })  
+    // data.data => langsung di eksekusi
+    // data?.data => ngecek data nullist / tidak. 
+    
 
     return (
         <div className=" row row-cols-1 row-cols-sm-3 m-auto mb-5" style={{ width: "90%" }}>
 
             {
-                TourData.map((item, index) => (
-                    <div className="col mt-5 mb-3" >
+                Trip?.map((item, index) => (
+                    <div className="col mt-5 mb-3" key={index}>
                         <Card style={{ width: '22rem', height: "350px" }} className='position-relative m-auto' >
-                            <Card.Img variant="top" src={item.img} style={{ width: "95%", margin: "auto", marginTop: "9px" }} />
+                            <Card.Img variant="top" src={item.image} style={{ width: "95%", margin: "auto", marginTop: "9px" }} />
                             <p style={{ top: "33px", right: "8px", borderRadius: "  5px 0 0 5px" }} className='position-absolute bg-white'>12/15</p>
 
                             <div style={{ marginBottom: "30px", marginLeft: "10px", marginTop:"10px"}}>
@@ -32,8 +45,9 @@ export default function TourCard() {
 
 
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "18px" }}>IDR. {item.Price}</p>
-                                    <p style={{ color: "grey", fontWeight: "500", marginRight: "30px" }}>{item.location}</p>
+                                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "18px" }}>IDR. {item.price}</p>
+                                    {/* <p style={{ color: "grey", fontWeight: "500", marginRight: "30px" }}>{item.country.Name}</p> */}
+                                    <p style={{ color: "grey", fontWeight: "500", marginRight: "30px" }}>yryfdf</p>
                                 </div>
 
                             </div>
