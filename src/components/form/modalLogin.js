@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useState , useContext } from 'react';
 import Form from 'react-bootstrap/Form';
 
 import { useMutation } from 'react-query';
-import { API } from '../../config/api';
+import { API , setAuthToken } from '../../config/api';
 
 import Modal from 'react-bootstrap/Modal';
+import { UserContext } from '../../context/userContext';
 
 function ModalLogin({outModal,showModal,chgNavbar}) {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+
+  const [_, dispatch] = useContext(UserContext)
 
 
   function handleOnChange(e) {
@@ -26,7 +29,13 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
     try {
       e.preventDefault()
       const response = await API.post("/login", data);
-      console.log('Login succes : ', response)
+      console.log('Login succes : ', response.data.Data)
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: response.data.Data
+      })
+      setAuthToken(localStorage.token)
+
       
       if( data.email === "admin45@gmail.com") {
         localStorage.setItem("admin", "isAdmin")

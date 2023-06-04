@@ -4,7 +4,6 @@ import Image from 'react-bootstrap/Image';
 
 
 export default function Carosl(props) {
-    console.log(props.Image)
     return (
         <div id="carouselExampleIndicators" className="carousel slide m-auto" style={{width:"100%"}}>
             <div className="carousel-indicators">

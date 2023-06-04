@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState , useContext } from 'react';
 import ModalLogin from '../form/modalLogin';
 import ModalRegister from '../form/modalRegister';
 
@@ -12,15 +12,17 @@ import Logo from '../images/logo.png'
 import Stack from 'react-bootstrap/Stack';
 import Ellipse from "../images/Ellipse1.png"
 
-function logOut(){
-  localStorage.removeItem("admin")
-  window.location.href = "/"
-}
+import { UserContext } from '../../context/userContext';
+
+
+
 
 
 function NavLog() {
 
   const auth = localStorage.getItem('admin')
+
+  const [_, dispatch] = useContext(UserContext)
 
   const [isLogin, setIsLogin] = useState(false);
   const [register, setRegister] = useState(false)
@@ -34,6 +36,15 @@ function NavLog() {
 
   const ModalShowReg = () => { setRegister(true)}
   const ModalOutReg = () => { setRegister(false)}
+
+  function logOut(){
+    localStorage.removeItem("admin")
+    dispatch({
+      type: "LOGOUT",
+      payload: {},
+    })
+    window.location.href = "/"
+  }
 
   return (
     <Navbar className='bgNav'>
@@ -56,7 +67,7 @@ function NavLog() {
               {auth === "noAdmin" ? (
                 
               <Dropdown.Menu>
-                <Dropdown.Item href="">Profile</Dropdown.Item>
+                <Dropdown.Item href="/profile/1/1">Profile</Dropdown.Item>
                 <Dropdown.Item href="">Pay</Dropdown.Item>
                 <Dropdown.Item href="#/action-3" onClick={logOut}>Log Out</Dropdown.Item>
               </Dropdown.Menu>

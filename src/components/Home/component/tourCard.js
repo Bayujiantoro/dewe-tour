@@ -1,19 +1,8 @@
 import Card from 'react-bootstrap/Card';
-import { useParams } from 'react-router';
-import { useEffect, useState } from 'react';
-
-import { TourData } from '../../fake-data/dummy';
-import { Button } from 'react-bootstrap';
-
 import { useQuery } from 'react-query';
 import { API } from '../../../config/api';
 
 export default function TourCard() {
-    const [fetchTrip, setFetchTrip] = useState(null)
-    const local = JSON.parse(localStorage.getItem("tourdata"))
-        if (local === !null) {
-            TourData.push(local)    
-        }
         
     const {data: Trip} = useQuery('tripChace', async () => {
         const response = await API.get('/trip');

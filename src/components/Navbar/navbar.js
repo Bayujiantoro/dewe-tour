@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image'
@@ -10,6 +10,7 @@ import icon from "../images/Ellipse1.png"
 import ModalLogin from '../form/modalLogin';
 import ModalRegister from '../form/modalRegister';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { UserContext } from '../../context/userContext';
 
 
 
@@ -31,11 +32,18 @@ function NavigationBar(props) {
   const ModalShowReg = () => { setRegister(true) }
   const ModalOutReg = () => { setRegister(false) }
 
+  const [_, dispatch] = useContext(UserContext)
+
   const auth = localStorage.getItem('admin')
 
   const logOut = () => {
     NavLogin()
+    console.log("logout")
     localStorage.removeItem("admin")
+    dispatch({
+      type: "LOGOUT",
+      payload: {},
+    })
   }
   // console(auth)
 
@@ -59,7 +67,7 @@ function NavigationBar(props) {
                 {auth === "noAdmin" ? (
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                    <Dropdown.Item href="/profile/1/1">Profile</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Pay</Dropdown.Item>
                     <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                   </Dropdown.Menu>

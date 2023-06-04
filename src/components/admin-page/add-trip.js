@@ -1,19 +1,18 @@
 import NavLog from "../Navbar/navbarLogin"
 import Footer from "../Footer/footer"
-import { TourData } from "../fake-data/dummy";
-import img from "../images/Rectangle-1.png"
 import { useMutation, useQuery } from "react-query";
 import { API } from "../../config/api";
-import { Navigate } from "react-router";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 
 
 export default function AddTrip() {
     const [preview, setPreview] = useState(null)  //for images
+    const navigate = useNavigate()
 
     const [data, setData] = useState({
         title: "",
@@ -35,7 +34,7 @@ export default function AddTrip() {
         return response.data.Data
     })
 
-    console.log("ini country ", country[1].Name)
+    // console.log("ini country ", country[1].Name)
 
 
     function handleOnChange(e) {
@@ -62,7 +61,7 @@ export default function AddTrip() {
 
             const config = {
                 Headers: {
-                    'Content-type': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data',
                     // "Authorization" : `Bearer ${localStorage.token}`
                 },
             }
@@ -84,7 +83,7 @@ export default function AddTrip() {
             const response = await API.post("/trip", formData, config);
 
             console.log("add trip succes : ", response)
-            // Navigate("/income-trip")
+            navigate("/income-trip")
             console.log(formData)
 
         } catch (error) {
@@ -111,8 +110,8 @@ export default function AddTrip() {
                         <Form.Label className="fw-bold">Country</Form.Label>
                         <Form.Select aria-label="Default select example" className="bg-dark-subtle" id="country" name="id_country" onChange={handleOnChange} required>
                             <option ></option>
-                            {country.map((item,index)=>(
-                                <option type="number" value={item.ID}>{item.Name}</option>   
+                            {country?.map((item, index)=>(
+                                <option type="number" key={index} value={item.ID}>{item.Name}</option>   
                             ))}
 
                             {/* <option type="number" value="2">Japan</option>

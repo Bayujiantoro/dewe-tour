@@ -15,12 +15,13 @@ import { API } from "../../config/api";
 export default function BoContent() {
     const {id, qty } = useParams()
 
-    const {data: getTrip} = useQuery('tripChace', async () => {
-        const response = await API.get(`/trip/${id}`);
-        console.log(response.data.Data)
-        return response.data.Data
+    const {data: transc} = useQuery('tripChace', async () => {
+        const response = await API.get(`/transaction/${id}`);
+        console.log(response?.data.Data)
+        return response?.data.Data
     })
 
+        console.log(transc)
 
     return (
         <div>
@@ -50,15 +51,15 @@ export default function BoContent() {
                     </div>
                     <div>
                         <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Duration</p>
-                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{`${getTrip?.Day} Day ${getTrip?.Night} Night`}</p>
+                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>day night</p>
                     </div>
                     <div>
                         <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Accomodation</p>
-                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{getTrip?.Accomodation}</p>
+                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>Accommodation</p>
                     </div>
                     <div>
                         <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Transportation</p>
-                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{getTrip?.Transportation}</p>
+                        <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>Transportation</p>
                     </div>
                 </div>
                 <div className=' d-flex justify-content-end'>
@@ -100,7 +101,7 @@ export default function BoContent() {
                             <td></td>
                             <td></td>
                             <th scope='row'> Total</th>
-                            <th scope='row'> :  <span style={{ color: "red" }}>IDR. total</span></th>
+                            <th scope='row'> :  <span style={{ color: "red" }}>IDR. price</span></th>
                         </tr>
 
                     </tbody>

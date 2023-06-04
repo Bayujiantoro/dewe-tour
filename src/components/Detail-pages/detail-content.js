@@ -12,33 +12,38 @@ import Clock from "../images/time1.png"
 import Time from "../images/calendar1.png"
 import Minus from "../images/Minus.png"
 import Plus from "../images/Plus.png"
-import { TourData } from "../fake-data/dummy";
 
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { API } from "../../config/api";
 
 
 
 export default function DetailContaint() {
     const {id} = useParams()
+    const [data, setData] = useState()
+    const [qty, setQty] = useState(1)
 
-    const data = TourData.find((item)=> item.id === id )
+    const {data: fetchTransc} = useQuery('transcChace', async () => {
+        const response = await API.get('/transaction');
+        console.log("data : ", response?.data.Data)
+        return response?.data.Data
+    }) 
+
+    let lastTransc = fetchTransc?.length - 1
+    let getIDlast = fetchTransc?.[lastTransc].ID 
+    console.log("length : ", lastTransc)
+    console.log("id : ",getIDlast)
 
     const {data: getTrip} = useQuery('tripChace', async () => {
         const response = await API.get(`/trip/${id}`);
-        console.log(response.data.Data)
+        setData(response.data.Data)
+   
         return response.data.Data
-    })
-
-    console.log("fetch", getTrip?.Price)
+    })   
     
-    
-    
-    const [qty, setQty] = useState(1)
 
     const HandleMinus = () => {
         if(qty > 1 ) {
-
             setQty((prev) => prev - 1)
         }
     }
@@ -46,8 +51,33 @@ export default function DetailContaint() {
     const HandlePlus = () => {
         setQty((data) => data + 1)
     }
+            
+    const createTransc = useMutation(async () => {
+        try {
+            const config = {
+                Headers: {
+                    'Content-Type' : 'application/json'
+                    
+                },
+            }
+            
+            let Transaction = {
+                Counter_qty: qty,
+                Status: "Waiting Payment",
+                Attachment: "Bca.jpg",
+                TripId: parseInt(id)
+            }
 
-    
+            // const jsonData = JSON.stringify(Transaction)
+            const response = await API.post("/transaction", Transaction, config);
+            console.log("type json data : ", typeof(jsonData))
+            console.log("xxxxx : ", response)
+            window.location.href = `/payment/${getIDlast}`
+        } catch (error) {
+            alert("Transaction failed ")
+            console.log("transaction failed : ", error)
+        }
+    })
 
     return (
 
@@ -89,14 +119,7 @@ export default function DetailContaint() {
                 </div>
                 <hr></hr>
                 <div className=" d-flex justify-content-end">
-                        <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={()=>{
-                            if (localStorage.getItem("admin") === null ) {
-                                window.scrollTo(500, 0);
-                                alert('Silahkan Login Terlebih Dahulu !!!')
-                            } else {
-                                window.location.href = `/payment/${getTrip?.ID}/${qty}`
-                            }
-                        }}> BOOK NOW </button>
+                        <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={createTransc.mutate}> BOOK NOW </button>
                 </div>
 
             </div>

@@ -16,19 +16,11 @@ import { UserContext } from "./context/userContext";
 import { useContext } from "react";
 
 
-
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App() {
-  // const [state, dispatch] = useContext(UserContext)
-  // const [isLoading, setIsLoading] = useState(true)
-
-  // const checkUser = async () => {
-  //   try{
-  //     const response = await API.get
-  //   }
-  // }
-
-
 
   return (
     <Router>
@@ -37,7 +29,7 @@ function App() {
         <Route exact path="/detail/:id" element={<Detail />} />
 
         <Route exact path="/" element={<PrivateLogin />}>
-          <Route exact path="/payment/:id/:qty" element={<Payment />} />
+          <Route exact path="/payment/:id" element={<Payment />} />
           <Route exact path="/profile/:id/:qty" element={<Profile />} />
 
         </Route>
