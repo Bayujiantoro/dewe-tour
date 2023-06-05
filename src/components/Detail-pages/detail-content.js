@@ -29,7 +29,7 @@ export default function DetailContaint() {
         return response?.data.Data
     }) 
 
-    let lastTransc = fetchTransc?.length - 1
+    let lastTransc = fetchTransc?.length-1
     let getIDlast = fetchTransc?.[lastTransc].ID 
     console.log("length : ", lastTransc)
     console.log("id : ",getIDlast)
@@ -68,11 +68,11 @@ export default function DetailContaint() {
                 TripId: parseInt(id)
             }
 
-            // const jsonData = JSON.stringify(Transaction)
+            
             const response = await API.post("/transaction", Transaction, config);
             console.log("type json data : ", typeof(jsonData))
             console.log("xxxxx : ", response)
-            window.location.href = `/payment/${getIDlast}`
+            window.location.href = `/payment/${getIDlast+1}`
         } catch (error) {
             alert("Transaction failed ")
             console.log("transaction failed : ", error)

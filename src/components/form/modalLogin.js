@@ -35,6 +35,7 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
         payload: response.data.Data
       })
       setAuthToken(localStorage.token)
+      localStorage.setItem("user",response.data.Data.name)
 
       
       if( data.email === "admin45@gmail.com") {

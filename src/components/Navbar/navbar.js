@@ -40,6 +40,7 @@ function NavigationBar(props) {
     NavLogin()
     console.log("logout")
     localStorage.removeItem("admin")
+    localStorage.removeItem("user")
     dispatch({
       type: "LOGOUT",
       payload: {},
