@@ -31,7 +31,8 @@ export default function AddTrip() {
     //fetching Country
     const { data: country } = useQuery('countryChace', async () => {
         const response = await API.get('/country');
-        return response.data.Data
+        console.log(response?.data.Data)
+        return response?.data.Data
     })
 
     // console.log("ini country ", country[1].Name)
@@ -78,7 +79,7 @@ export default function AddTrip() {
             formData.set('Price', data.price);
             formData.set('Quota', data.quota);
             formData.set('Description', data.description);
-            formData.set('Id_country', data.id_country)
+            formData.set('ID_country', data.id_country)
 
             const response = await API.post("/trip", formData, config);
 

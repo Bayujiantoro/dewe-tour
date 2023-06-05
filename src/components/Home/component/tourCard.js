@@ -36,7 +36,7 @@ export default function TourCard() {
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <p style={{ color: "darkorange", fontWeight: "700", fontSize: "18px" }}>IDR. {item.price}</p>
                                     {/* <p style={{ color: "grey", fontWeight: "500", marginRight: "30px" }}>{item.country.Name}</p> */}
-                                    <p style={{ color: "grey", fontWeight: "500", marginRight: "30px" }}>yryfdf</p>
+                                    <p style={{ color: "grey", fontWeight: "500", marginRight: "30px" }}>{item.country.Name}</p>
                                 </div>
 
                             </div>

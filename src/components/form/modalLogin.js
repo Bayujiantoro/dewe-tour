@@ -44,6 +44,7 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
         window.location.href = '/list-transaction';
       } else {
         localStorage.setItem("admin", "noAdmin")
+      window.location.reload()
         
       }
       
@@ -55,7 +56,6 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
 
       chgNavbar()
       outModal()
-      window.location.reload()
     } catch (error) {
       alert("Login Failed ")
       console.log("login failed : ", error)
