@@ -19,6 +19,11 @@ import { API } from "../../config/api";
 
 
 export default function DetailContaint() {
+    const {data: checkAuth} = useQuery('checkAuthChace', async () => {
+        const response = await API.get('/check-auth');
+        console.log("check auth : ", response?.data.Data)
+        return response?.data.Data
+    })
     const {id} = useParams()
     const [data, setData] = useState()
     const [qty, setQty] = useState(1)
@@ -27,7 +32,7 @@ export default function DetailContaint() {
         const response = await API.get('/transaction');
         console.log("data : ", response?.data.Data)
         return response?.data.Data
-    }) 
+    }) // get trip untuk ambil panjang data untuk ID transaksi
 
     let lastTransc = fetchTransc?.length-1
     let getIDlast = fetchTransc?.[lastTransc].ID 
@@ -53,6 +58,10 @@ export default function DetailContaint() {
     }
             
     const createTransc = useMutation(async () => {
+        if (localStorage.getItem("user") === null) {
+            alert("silahkan login terlebih dahulu")
+           return window.scrollTo(500, 0);
+        }
         try {
             const config = {
                 Headers: {
@@ -74,8 +83,9 @@ export default function DetailContaint() {
             console.log("xxxxx : ", response)
             window.location.href = `/payment/${getIDlast+1}`
         } catch (error) {
+           
             alert("Transaction failed ")
-            console.log("transaction failed : ", error)
+            console.log("transaction failed : ", localStorage.getItem("user"))
         }
     })
 
