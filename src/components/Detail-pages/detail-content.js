@@ -1,8 +1,8 @@
 import Carosl from "./carosel"
 import TripInfo from "./information-trip"
 import Image from 'react-bootstrap/Image';
-import { useState } from "react";
-import { useParams } from "react-router";
+import { useState , useEffect } from "react";
+import { useNavigate, useParams } from "react-router";
 
 
 import vector3 from "../images/Vector3.png"
@@ -19,36 +19,43 @@ import { API } from "../../config/api";
 
 
 export default function DetailContaint() {
-    const {data: checkAuth} = useQuery('checkAuthChace', async () => {
+    const { data: checkAuth } = useQuery('checkAuthChace', async () => {
         const response = await API.get('/check-auth');
         console.log("check auth : ", response?.data.Data)
         return response?.data.Data
     })
-    const {id} = useParams()
+
+    let navigate = useNavigate()
+    const { id } = useParams()
     const [data, setData] = useState()
     const [qty, setQty] = useState(1)
 
-    const {data: fetchTransc} = useQuery('transcChace', async () => {
+    const { data: fetchTransc } = useQuery('transcChace', async () => {
         const response = await API.get('/transaction');
         console.log("data : ", response?.data.Data)
         return response?.data.Data
     }) // get trip untuk ambil panjang data untuk ID transaksi
 
-    let lastTransc = fetchTransc?.length-1
-    let getIDlast = fetchTransc?.[lastTransc].ID 
+    let lastTransc = fetchTransc?.length - 1
+    let getIDlast = fetchTransc?.[lastTransc].ID
     console.log("length : ", lastTransc)
-    console.log("id : ",getIDlast)
+    console.log("id : ", getIDlast)
 
-    const {data: getTrip} = useQuery('tripChace', async () => {
+    const { data: getTrip } = useQuery('tripChace', async () => {
         const response = await API.get(`/trip/${id}`);
         setData(response.data.Data)
-   
+
         return response.data.Data
-    })   
-    
+    })
+    const { data: user } = useQuery('userChace', async () => {
+        const response = await API.get(`/check-auth`);
+        console.log(response?.data.Data)
+        return response?.data.Data
+    })
+
 
     const HandleMinus = () => {
-        if(qty > 1 ) {
+        if (qty > 1) {
             setQty((prev) => prev - 1)
         }
     }
@@ -56,38 +63,85 @@ export default function DetailContaint() {
     const HandlePlus = () => {
         setQty((data) => data + 1)
     }
-            
+
     const createTransc = useMutation(async () => {
         if (localStorage.getItem("user") === null) {
             alert("silahkan login terlebih dahulu")
-           return window.scrollTo(500, 0);
-        }
-        try {
-            const config = {
-                Headers: {
-                    'Content-Type' : 'application/json'
-                    
-                },
-            }
-            
-            let Transaction = {
-                Counter_qty: qty,
-                Status: "Waiting Payment",
-                Attachment: "Bca.jpg",
-                TripId: parseInt(id)
-            }
+            return window.scrollTo(500, 0);
+        } else if (user.Role === "admin") {
+            alert("Admin tidak bisa melakukan transaksi !!!")
+            return window.location.href = '/'
+        } else {
+            try {
+                const config = {
+                    Headers: {
+                        'Content-Type': 'application/json'
 
-            
-            const response = await API.post("/transaction", Transaction, config);
-            console.log("type json data : ", typeof(jsonData))
-            console.log("xxxxx : ", response)
-            window.location.href = `/payment/${getIDlast+1}`
-        } catch (error) {
-           
-            alert("Transaction failed ")
-            console.log("transaction failed : ", localStorage.getItem("user"))
+                    },
+                }
+
+                let Transaction = {
+                    Counter_qty: qty,
+                    Status: "Waiting Payment",
+                    Attachment: "Bca.jpg",
+                    TripId: parseInt(id)
+                }
+
+
+                const response = await API.post("/transaction", Transaction, config);
+                console.log("type json data : ", typeof (jsonData))
+                console.log("xxxxx : ", response)
+                
+                // payment midtrans
+                const token = response.data.Data.token;
+                window.snap.pay(token, {
+                  onSuccess: function (result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    navigate("/profile");
+                  },
+                  onPending: function (result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    navigate("/profile");
+                  },
+                  onError: function (result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    navigate("/profile");
+                  },
+                  onClose: function () {
+                    /* You may add your own implementation here */
+                    alert("you closed the popup without finishing the payment");
+                  },
+                });
+                // payment midtrans
+
+            } catch (error) {
+
+                // alert("Transaction failed ")
+                console.log(error.response.data)
+                console.log("transaction failed : ", localStorage.getItem("user"))
+            }
         }
     })
+    useEffect(() => {
+        //change this to the script source you want to load, for example this is snap.js sandbox env
+        const midtransScriptUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
+        //change this according to your client-key
+        const myMidtransClientKey = process.env.REACT_APP_MIDTRANS_CLIENT_KEY;
+
+        let scriptTag = document.createElement("script");
+        scriptTag.src = midtransScriptUrl;
+        // optional if you want to set script attribute
+        // for example snap.js have data-client-key attribute
+        scriptTag.setAttribute("data-client-key", myMidtransClientKey);
+
+        document.body.appendChild(scriptTag);
+        return () => {
+            document.body.removeChild(scriptTag);
+        };
+    }, []);
 
     return (
 
@@ -96,7 +150,7 @@ export default function DetailContaint() {
             <div className="container my-5 ps-5 " style={{ width: "80%" }}>
                 <h1 className="fw-bold">{getTrip?.Title}</h1>
                 <p style={{ color: "grey", fontSize: "20px" }} className="fw-semibold">{getTrip?.Country?.Name}</p>
-                <Carosl Image= {getTrip?.Image}/>
+                <Carosl Image={getTrip?.Image} />
                 <p className="fw-bold fs-4 mt-5">Information Trip</p>
                 <div className="row row-cols-1 row-cols-sm-5">
                     <TripInfo imag={Hotel} tag={"Accommodation"} info={getTrip?.Accomodation} />
@@ -129,7 +183,7 @@ export default function DetailContaint() {
                 </div>
                 <hr></hr>
                 <div className=" d-flex justify-content-end">
-                        <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={createTransc.mutate}> BOOK NOW </button>
+                    <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={createTransc.mutate}> BOOK NOW </button>
                 </div>
 
             </div>

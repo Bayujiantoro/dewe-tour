@@ -1,9 +1,7 @@
-import { TourData } from "../fake-data/dummy";
 import NavLog from "../Navbar/navbarLogin";
 import Footer from "../Footer/footer";
-import TourCard from "../Home/component/tourCard";
 import { Button } from "react-bootstrap";
-
+import TourCardAdmin from "./TourCardAdmin";
 export default function IncomeTrip() {
     return (
         <div className="bgColor">
@@ -17,7 +15,7 @@ export default function IncomeTrip() {
                     Add Trip
                 </Button>
             </div>
-            <TourCard />
+            <TourCardAdmin />
             <Footer />
         </div>
     )

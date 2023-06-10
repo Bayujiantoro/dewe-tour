@@ -11,14 +11,13 @@ import ModalLogin from '../form/modalLogin';
 import ModalRegister from '../form/modalRegister';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { UserContext } from '../../context/userContext';
-
-
-
-
-
+import { useMutation, useQuery } from "react-query";
+import { API } from "../../config/api";
 
 
 function NavigationBar(props) {
+ 
+
   const [isLogin, setIsLogin] = useState(false);
   const [register, setRegister] = useState(false)
   const [changeNav, setChangeNav] = useState(false)
@@ -33,8 +32,8 @@ function NavigationBar(props) {
   const ModalOutReg = () => { setRegister(false) }
 
   const [_, dispatch] = useContext(UserContext)
-
-  const auth = localStorage.getItem('admin')
+   
+  const auth = localStorage.getItem("admin")
 
   const logOut = () => {
     NavLogin()
@@ -45,6 +44,7 @@ function NavigationBar(props) {
       type: "LOGOUT",
       payload: {},
     })
+  window.location.reload()
   }
   // console(auth)
 
@@ -59,7 +59,7 @@ function NavigationBar(props) {
           </a>
           <Navbar.Collapse className="justify-content-end" >
 
-            {auth === "noAdmin" || auth === "isAdmin" ? (
+            {auth ==="noAdmin" || auth === "isAdmin" ? (
               <Dropdown>
                 <Dropdown.Toggle variant="" id="dropdown-basic" style={{ border: "none" }}>
                   <Image src={icon} />
@@ -68,7 +68,7 @@ function NavigationBar(props) {
                 {auth === "noAdmin" ? (
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/profile/1/1">Profile</Dropdown.Item>
+                    <Dropdown.Item href="/profile">Profile</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Pay</Dropdown.Item>
                     <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                   </Dropdown.Menu>
@@ -76,6 +76,7 @@ function NavigationBar(props) {
                   <div>
                     <Dropdown.Menu>
                       <Dropdown.Item href="/income-trip">Trip</Dropdown.Item>
+                      <Dropdown.Item href="/list-transaction">List Transaction</Dropdown.Item>
                       <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                     </Dropdown.Menu>
 

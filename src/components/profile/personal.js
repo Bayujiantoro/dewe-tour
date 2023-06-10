@@ -6,9 +6,9 @@ import iconPhone from "../images/icon-phone.png"
 import iconMap from "../images/icon-map.png"
 
 
-export default function Personal() {
 
-    
+export default function Personal(props) {
+   const data = props.data
     return (
         <div className=" m-auto pb-3 rounded bg-white my-5" style={{ width: "50%" }}>
 
@@ -22,14 +22,14 @@ export default function Personal() {
                         <div className="d-flex my-3">
                             <Image style={{ width: "30px", height: "30px", marginTop: "7px" }} src={iconProfile} />
                             <div>
-                                <p className=" ms-3 my-0 fw-bold">C Ronaldo</p>
+                                <p className=" ms-3 my-0 fw-bold">{data?.Name}</p>
                                 <p className=" ms-3 my-0" style={{ fontSize: "13px", color: "grey" }}>Full Name</p>
                             </div>
                         </div>
                         <div className="d-flex my-3">
                             <Image style={{ width: "30px", height: "23px", marginTop: "7px" }} src={iconEmail} />
                             <div>
-                                <p className=" ms-3 my-0 fw-bold">Ronaldocr7@gmail.com</p>
+                                <p className=" ms-3 my-0 fw-bold">{data?.Email}</p>
                                 <p className=" ms-3 my-0" style={{ fontSize: "13px", color: "grey" }}>Email</p>
                             </div>
                         </div>

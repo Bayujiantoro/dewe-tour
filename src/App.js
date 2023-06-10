@@ -6,10 +6,12 @@ import ListTransaction from "./components/admin-page/list-transaction";
 import Profile from "./components/profile/profile";
 import { BrowserRouter as Router, Routes, Route, redirect as Redirect } from "react-router-dom"
 import React, { useState } from "react";
-import PrivateRoute from "./components/privateRoute";
+
+import PrivateAdmin from "./components/privateRoute";
 import AddTrip from "./components/admin-page/add-trip";
 import IncomeTrip from "./components/admin-page/income-trip";
 import PrivateLogin from "./components/privateLogin";
+import UpdateTrip from "./components/admin-page/update-trip";
 
 import { API, setAuthToken } from "./config/api";
 import { UserContext } from "./context/userContext";
@@ -30,14 +32,15 @@ function App() {
 
         <Route exact path="/" element={<PrivateLogin />}>
           <Route exact path="/payment/:id" element={<Payment />} />
-          <Route exact path="/profile/:id/:qty" element={<Profile />} />
+          <Route exact path="/profile" element={<Profile />} />
 
         </Route>
 
-        <Route exact path="/" element={<PrivateRoute />} >
+        <Route exact path="/" element={<PrivateAdmin />} >
           <Route exact path="/list-transaction" element={<ListTransaction />} />
           <Route exact path="/add-trip" element={<AddTrip />} />
           <Route exact path="/income-trip" element={<IncomeTrip />} />
+          <Route exact path="/update-trip/:id" element={<UpdateTrip />} />
         </Route>
 
         {/* <Route exact path="/profile" element={<Profile />} /> */}

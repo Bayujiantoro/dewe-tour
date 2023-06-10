@@ -37,18 +37,20 @@ function ModalLogin({outModal,showModal,chgNavbar}) {
       setAuthToken(localStorage.token)
       localStorage.setItem("user",response.data.Data.name)
 
-      
-      if( data.email === "admin45@gmail.com") {
+      const auth = response.data.Data.role
+      alert("Login success")
+      chgNavbar()
+      if( auth === "admin") {
         localStorage.setItem("admin", "isAdmin")
         
         window.location.href = '/list-transaction';
-      } else {
+      } 
+      else {
         localStorage.setItem("admin", "noAdmin")
       window.location.reload()
         
       }
       
-      alert("Login success")
       setData({
         email: "",
         password: "",

@@ -1,19 +1,27 @@
 import { Button, Image } from "react-bootstrap"
 import UploadImg from "../images/Upload.png"
 import Logo from "../images/logo-black.png"
-import { TourData } from "../fake-data/dummy"
-
+import { useQuery } from 'react-query';
+import { useEffect } from "react";
+import { API } from "../../config/api";
 export default function ModalApprove(props) {
-    const data = TourData.find((item) => item.id === props.data)
-    
+    console.log(props.data)
+    let data = props.data
+
+    // const {data: transcId} = useQuery('transcChace', async () => {
+    //     const response = await API.get(`/transaction/${props.data}`)
+    //     console.log(response?.data.Data)
+    //     return response?.data.Data
+    // })
+    // console.log(transcId)
 
     return (
 
         <div class="modal-body">
 
-            <div className=" rounded mt-5" style={{ backgroundColor: "white", width: "85%", margin: "auto", border: "2px solid grey" }}>
+            <div className=" rounded my-5" style={{ backgroundColor: "white", width: "85%", margin: "auto", border: "2px solid grey" }}>
 
-                <div >
+                <div className="my-5">
                     <div className="d-flex justify-content-between" style={{ width: "90%", margin: "auto" }}>
                         <div className=''>
                             <Image className='mt-3' src={Logo} />
@@ -28,7 +36,7 @@ export default function ModalApprove(props) {
                         <div className=''>
                             <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}></p>
                             <p style={{ color: "grey", marginTop: "0!important" }}></p>
-                            <p className='mt-5' style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>Waiting Payment</p>
+                            <p className='mt-5' style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>{data.Status}</p>
 
                         </div>
                         <div className=' row row-cols-2'>
@@ -37,16 +45,16 @@ export default function ModalApprove(props) {
                                 <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
                             </div>
                             <div>
-                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Duration</p>
+                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{`${data.trip.day} Day ${data.trip.night} Night`}</p>
                             </div>
                             <div>
-                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Accomdation</p>
+                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{data.trip.accomodation}</p>
                             </div>
                             <div>
-                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Transportation</p>
+                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{data.trip.transportation}</p>
                             </div>
                         </div>
                         <div className=' d-flex justify-content-end'>
@@ -75,11 +83,11 @@ export default function ModalApprove(props) {
                                 <tr>
                                     {/* <th scope="row">1</th> */}
                                     <td>1</td>
-                                    <td>C Ronaldo</td>
+                                    <td>{data.User.Name}</td>
                                     <td>Male</td>
                                     <td>8745565878</td>
                                     <th scope='row'> Qty</th>
-                                    <th scope='row'> :  1</th>
+                                    <th scope='row'> :  {data.Counter_qty}</th>
                                 </tr>
                                 <tr>
                                     {/* <th scope="row">1</th> */}
@@ -88,7 +96,7 @@ export default function ModalApprove(props) {
                                     <td></td>
                                     <td></td>
                                     <th scope='row'> Total</th>
-                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data.Price}</span></th>
+                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data.Total}</span></th>
                                 </tr>
 
                             </tbody>
@@ -96,7 +104,7 @@ export default function ModalApprove(props) {
                     </div>
 
                 </div>
-                <div style={{ width: "90%", margin: "auto" }} className='d-flex justify-content-end mt-4 mb-5'>
+                {/* <div style={{ width: "90%", margin: "auto" }} className='d-flex justify-content-end mt-4 mb-5'>
                     <a href={`/profile/`}>
 
                         <Button className='btn btn-outline-dark me-3' style={{ color: "white", width: "130px", backgroundColor: "darkorange" }} >Cancel</Button>{' '}
@@ -106,7 +114,7 @@ export default function ModalApprove(props) {
                         <Button className='btn btn-outline-dark ' style={{ color: "white", width: "130px", backgroundColor: "darkorange" }} >Approve</Button>{' '}
                     </a>
 
-                </div>
+                </div> */}
 
             </div>
         </div>

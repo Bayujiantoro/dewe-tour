@@ -1,30 +1,17 @@
 import { Image } from "react-bootstrap"
 import Logo from "../images/logo-black.png"
 import Barcode from "../images/Barcode.png"
-import { TourData } from "../fake-data/dummy"
 
 
-export default function HistoryTrip({id,qty}) {
-
-    const data = TourData.find((item)=> item.id === id )
-    
+export default function HistoryTrip({data, i}) {
+  
+    console.log("dari : ", data)
+    console.log("dari : ", i)
     
     return (
         <div className="m-auto" style={{ width: '75%' }}>
             <p className="fs-3 fw-bold"> History Trip</p>
 
-            {/* <div className="border bg-white rounded mb-5">
-            <div className="d-flex justify-content-between" style={{ width: "90%", margin: "auto" }}>
-                <div className=''>
-                    <Image className='mt-3' src={Logo} />
-                </div>
-                <div className=''>
-                    <p className='fs-2 fw-bold  mb-0 text-end'>Booking</p>
-                    <p className='fs-5 fw-bold text-end' style={{ color: "grey" }}>Saturday, <span className='fw-normal'>25 august 2024</span></p>
-                </div>
-
-            </div>
-            </div> */}
 
             <div>
 
@@ -41,9 +28,9 @@ export default function HistoryTrip({id,qty}) {
                     </div>
                     <div className='row row-cols-1 row-cols-sm-3 m-auto' style={{ width: "90%" }}>
                         <div className=''>
-                            <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>{data.title}</p>
-                            <p style={{ color: "grey", marginTop: "0!important" }}>{data.location}</p>
-                            <p className='mt-5' style={{ backgroundColor: "aliceBlue", fontWeight: "500", color: "Green", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>Waiting Payment</p>
+                            <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}>{data?.Trip.title}</p>
+                            <p style={{ color: "grey", marginTop: "0!important" }}></p>
+                            <p className='mt-5' style={{ backgroundColor: "aliceBlue", fontWeight: "500", color: "Green", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>{data?.Status}</p>
 
                         </div>
                         <div className=' row row-cols-2'>
@@ -52,16 +39,16 @@ export default function HistoryTrip({id,qty}) {
                                 <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
                             </div>
                             <div>
-                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Duration</p>
+                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{`${data?.Trip.day} day ${data?.Trip.night} Night`}</p>
                             </div>
                             <div>
-                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Accomodation</p>
+                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{data?.Trip.accomodation}</p>
                             </div>
                             <div>
-                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Date Trip</p>
-                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>23 August 2024</p>
+                                <p className='fw-3 fs-6 fw-bold' style={{ marginBottom: "0" }}>Transportation</p>
+                                <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{data?.Trip.transportation}</p>
                             </div>
                         </div>
                         <div className=' d-flex justify-content-end'>
@@ -94,7 +81,7 @@ export default function HistoryTrip({id,qty}) {
                                     <td>Male</td>
                                     <td>8745565878</td>
                                     <th scope='row'> Qty</th>
-                                    <th scope='row'> :  {qty}</th>
+                                    <th scope='row'> : {data?.Counter_qty}</th>
                                 </tr>
                                 <tr>
                                     {/* <th scope="row">1</th> */}
@@ -103,7 +90,7 @@ export default function HistoryTrip({id,qty}) {
                                     <td></td>
                                     <td></td>
                                     <th scope='row'> Total</th>
-                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data.Price * qty}</span></th>
+                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data?.Total}</span></th>
                                 </tr>
 
                             </tbody>

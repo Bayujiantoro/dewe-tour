@@ -1,7 +1,8 @@
 import NavLog from "../Navbar/navbarLogin"
 import Footer from "../Footer/footer"
 import SearchIcon from "../images/search.png"
-import { TourData } from "../fake-data/dummy"
+import { API } from "../../config/api"
+import { useQuery } from "react-query"
 
 import { Image } from "react-bootstrap"
 
@@ -9,6 +10,12 @@ import ModalApprove from "./modalApprove"
 
 
 export default function ListTransaction() {
+    const { data: transc } = useQuery('transcChace', async () => {
+        const response = await API.get('/transaction');
+        console.log(response?.data.Data)
+        return response?.data.Data
+    })
+
     return (
         <div className="bgColor">
             <NavLog />
@@ -27,25 +34,27 @@ export default function ListTransaction() {
 
                         </tr>
                     </thead>
-                    <tbody style={{cursor:"pointer"}}>
+                    <tbody style={{ cursor: "pointer" }}>
 
-                        {TourData.map((item, index) => (
+                        {transc?.map((item, index) => (
 
-                            <tr data-bs-toggle="modal" data-bs-target={`#exampleModal${item.id}`}>
+                            <tr data-bs-toggle="modal" data-bs-target={`#exampleModal${item.ID}`}>
 
-                                <td>{item.id}</td>
+                                <td className="no">{index + 1}</td>
                                 <td>C Ronaldo</td>
-                                <td>{item.title}</td>
-                                <td>BCA</td>
-                                <td > <span style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", padding: "0 15px 5px 15px" }}>Pending</span></td>
+                                <td>{item.trip.title}</td>
+                                <td>{item.Attachment}</td>
+
+                                <td > <span style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", padding: "0 15px 5px 15px" }} className="status">{item.Status}</span></td>
                                 <td>
+                                
                                     <Image src={SearchIcon} />
 
                                 </td>
-                                <div class="modal fade modal-xl" id={`exampleModal${item.id}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade modal-xl" id={`exampleModal${item.ID}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog " >
                                         <div class="modal-content bg-transparant" >
-                                            <ModalApprove data = {item.id} />
+                                            <ModalApprove data={transc[index]} />
                                         </div>
                                     </div>
                                 </div>
@@ -55,12 +64,6 @@ export default function ListTransaction() {
 
                     </tbody>
                 </table>
-
-
-
-
-
-
 
             </div>
             <Footer />
