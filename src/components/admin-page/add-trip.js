@@ -109,7 +109,7 @@ export default function AddTrip() {
 
                     <Form.Group className="mb-3">
                         <Form.Label className="fw-bold">Country</Form.Label>
-                        <Form.Select aria-label="Default select example" className="bg-dark-subtle" id="country" name="id_country" onChange={handleOnChange} required>
+                        <Form.Select aria-label="Default select example" className="bg-dark-subtle" id="country" name="id_country" onChange={handleOnChange}>
                             <option ></option>
                             {country?.map((item, index)=>(
                                 <option type="number" key={index} value={item.ID}>{item.Name}</option>   

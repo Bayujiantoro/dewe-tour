@@ -3,10 +3,11 @@ import Logo from "../images/logo-black.png"
 import Barcode from "../images/Barcode.png"
 
 
-export default function HistoryTrip({data, i}) {
+export default function HistoryTrip({data, i , nama}) {
   
     console.log("dari : ", data)
     console.log("dari : ", i)
+    console.log("dari : ", nama)
     
     return (
         <div className="m-auto" style={{ width: '75%' }}>
@@ -77,7 +78,7 @@ export default function HistoryTrip({data, i}) {
                                 <tr>
                                     {/* <th scope="row">1</th> */}
                                     <td>1</td>
-                                    <td>C Ronaldo</td>
+                                    <td>{nama}</td>
                                     <td>Male</td>
                                     <td>8745565878</td>
                                     <th scope='row'> Qty</th>

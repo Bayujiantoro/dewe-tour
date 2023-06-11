@@ -16,36 +16,21 @@ import Plus from "../images/Plus.png"
 import { useMutation, useQuery } from "react-query";
 import { API } from "../../config/api";
 
-
+const myMidtransClientKey = process.env.REACT_APP_MIDTRANS_CLIENT_KEY;
 
 export default function DetailContaint() {
-    const { data: checkAuth } = useQuery('checkAuthChace', async () => {
-        const response = await API.get('/check-auth');
-        console.log("check auth : ", response?.data.Data)
-        return response?.data.Data
-    })
 
     let navigate = useNavigate()
     const { id } = useParams()
     const [data, setData] = useState()
     const [qty, setQty] = useState(1)
 
-    const { data: fetchTransc } = useQuery('transcChace', async () => {
-        const response = await API.get('/transaction');
-        console.log("data : ", response?.data.Data)
-        return response?.data.Data
-    }) // get trip untuk ambil panjang data untuk ID transaksi
-
-    let lastTransc = fetchTransc?.length - 1
-    let getIDlast = fetchTransc?.[lastTransc].ID
-    console.log("length : ", lastTransc)
-    console.log("id : ", getIDlast)
 
     const { data: getTrip } = useQuery('tripChace', async () => {
         const response = await API.get(`/trip/${id}`);
-        setData(response.data.Data)
+        setData(response?.data.Data)
 
-        return response.data.Data
+        return response?.data.Data
     })
     const { data: user } = useQuery('userChace', async () => {
         const response = await API.get(`/check-auth`);

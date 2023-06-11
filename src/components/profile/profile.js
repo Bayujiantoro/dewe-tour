@@ -12,7 +12,7 @@ export default function Profile() {
         // console.log("check auth : ", response?.data.Data)
         return response?.data.Data
     })
-    // console.log("dari profile : ",checkAuth)
+    console.log("dari profile : ",checkAuth)
     return (
         <div className="bgColor">
             <NavLog />
@@ -20,7 +20,7 @@ export default function Profile() {
             {
                 checkAuth?.Transaction.map((item, index) => (
 
-                    <HistoryTrip data={item} i={index} />
+                    <HistoryTrip data={item} i={index} nama={checkAuth?.Name}/>
                 ))
             }
             <Footer />
