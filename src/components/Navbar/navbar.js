@@ -69,7 +69,6 @@ function NavigationBar(props) {
 
                   <Dropdown.Menu>
                     <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Pay</Dropdown.Item>
                     <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                   </Dropdown.Menu>
                 ) : (

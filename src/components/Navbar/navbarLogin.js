@@ -77,7 +77,6 @@ function NavLog() {
 
                   <Dropdown.Menu>
                     <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-                    <Dropdown.Item href="">Pay</Dropdown.Item>
                     <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                   </Dropdown.Menu>
                 ) : (

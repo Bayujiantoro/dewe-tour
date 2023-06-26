@@ -42,14 +42,6 @@ function App() {
           <Route exact path="/income-trip" element={<IncomeTrip />} />
           <Route exact path="/update-trip/:id" element={<UpdateTrip />} />
         </Route>
-
-        {/* <Route exact path="/profile" element={<Profile />} /> */}
-
-
-        {/* <Route path="/list-transaction" element={<ListTransaction />} /> */}
-
-
-
       </Routes>
     </Router>
     // <Home/>

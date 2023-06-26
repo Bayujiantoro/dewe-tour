@@ -74,7 +74,6 @@ export default function DetailContaint() {
 
 
                 const response = await API.post("/transaction", Transaction, config);
-                console.log("type json data : ", typeof (jsonData))
                 console.log("xxxxx : ", response)
                 
                 // payment midtrans
@@ -148,7 +147,7 @@ export default function DetailContaint() {
                 <p className="fw-bold fs-4 mt-5">Description</p>
                 <p style={{ color: "grey", fontSize: "13px", fontWeight: "600", marginBottom: "5px" }}>{getTrip?.Description}</p>
                 <div className="mt-5 d-flex justify-content-between">
-                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "20px" }}> IDR. {getTrip?.Price}  <span style={{ color: "black" }}>/ Person</span></p>
+                    <p style={{ color: "darkorange", fontWeight: "700", fontSize: "20px" }}> IDR. {getTrip?.Price.toLocaleString()}  <span style={{ color: "black" }}>/ Person</span></p>
 
                     <div className="d-flex">
                         <Image style={{ height: "18px", width: "18px", marginRight: "18px", marginTop: "3px", cursor: "pointer" }} src={Minus} onClick={HandleMinus} />
@@ -163,7 +162,7 @@ export default function DetailContaint() {
                 <div className=" d-flex justify-content-between">
                     <p style={{ fontWeight: "700", fontSize: "20px" }} > Total : </p>
                     <div className="d-flex">
-                        <p style={{ fontWeight: "700", fontSize: "20px", color: "darkorange" }}> IDR. {getTrip?.Price * qty} </p>
+                        <p style={{ fontWeight: "700", fontSize: "20px", color: "darkorange" }}> IDR. {(getTrip?.Price * qty).toLocaleString()} </p>
                     </div>
                 </div>
                 <hr></hr>

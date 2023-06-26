@@ -121,11 +121,6 @@ export default function AddTrip() {
                         </Form.Select>
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3" >
-                        <Form.Label className="fw-bold">Country</Form.Label>
-                        <Form.Control type="text" className="bg-dark-subtle" />
-                    </Form.Group> */}
-
                     <Form.Group className="mb-3" >
                         <Form.Label className="fw-bold">Accomodation</Form.Label>
                         <Form.Control type="text" className="bg-dark-subtle" name="accomodation" onChange={handleOnChange} required />

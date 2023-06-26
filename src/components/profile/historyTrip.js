@@ -91,7 +91,7 @@ export default function HistoryTrip({data, i , nama}) {
                                     <td></td>
                                     <td></td>
                                     <th scope='row'> Total</th>
-                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data?.Total}</span></th>
+                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data?.Total.toLocaleString()}</span></th>
                                 </tr>
 
                             </tbody>
