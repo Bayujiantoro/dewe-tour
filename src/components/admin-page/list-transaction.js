@@ -45,7 +45,7 @@ export default function ListTransaction() {
                                 <td>{item.trip.title}</td>
                                 <td>{item.Attachment}</td>
 
-                                <td > <span style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", padding: "0 15px 5px 15px" }} className="status">{item.Status}</span></td>
+                                <td > <span style={{ backgroundColor: "lightgreen", fontWeight: "500", color: "green", borderRadius: "5px", padding: "0 15px 5px 15px" }} className="status">{item.Status}</span></td>
                                 <td>
                                 
                                     <Image src={SearchIcon} />

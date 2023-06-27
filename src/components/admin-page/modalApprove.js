@@ -36,7 +36,7 @@ export default function ModalApprove(props) {
                         <div className=''>
                             <p className='' style={{ marginBottom: "0", fontSize: "20px", fontWeight: "700" }}></p>
                             <p style={{ color: "grey", marginTop: "0!important" }}></p>
-                            <p className='mt-5' style={{ backgroundColor: "antiquewhite", fontWeight: "500", color: "red", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>{data.Status}</p>
+                            <p className='mt-5 text-center' style={{ backgroundColor: "lightgreen", fontWeight: "500", color: "green", borderRadius: "5px", paddingLeft: "5px", width: "140px" }}>{data.Status}</p>
 
                         </div>
                         <div className=' row row-cols-2'>
