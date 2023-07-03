@@ -5,10 +5,10 @@
     background-repeat: no-repeat;
     background-size: 100%;
     background-color: whitesmoke;
-    
+
 }
 
-.btn-orange{
+.btn-orange {
     background-color: darkorange !important;
     color: white !important;
 }
@@ -18,36 +18,159 @@
     /* background-color: red; */
 
 }
+
 .outLine {
-    outline: none!important;
+    outline: none !important;
     outline-style: none;
     outline-color: darkorange;
 }
 
-.bgNav{
+.bgNav {
     background-image: url("../images/image-1.png");
     background-size: 100%;
 }
 
 .bt-transparant {
-    background-color: rgba(0,0,0,0.1)!important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
     width: 100px;
     border-color: white !important;
 }
 
 .bg-transparant {
-    background-color: rgba(0,0,0,0)!important;
+    background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.text{
-    text-decoration: none!important;
+.text {
+    text-decoration: none !important;
     color: black;
 }
-a:hover{
-    color: black!important;
+
+a:hover {
+    color: black !important;
 }
 
-.table-list-transaction{
+.table-list-transaction {
     /* padding: 30px !important; */
     width: 100px !important;
+}
+
+/* home */
+
+/* .container-card {
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+.card-home {
+    width: 13rem;
+    height: 300px;
+    margin: auto;
+}
+
+
+/* tagline */
+.explore {
+    color: white;
+    font-weight: 800;
+    font-size: 50px;
+}
+
+.city-together {
+    color: white;
+    font-weight: 100;
+    font-size: 60px;
+}
+
+.tagline-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+/* end tagline */
+
+
+
+.card-tour {
+    width: 22rem;
+    height: 350px;
+}
+
+/* detail */
+
+.font-title {
+    font-size: 35px;
+}
+
+.text-trip-info {
+    color: grey;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.modal-approv {
+    background-color: white;
+    width: 85%;
+    margin: auto;
+    border: 2px solid grey;
+}
+.mobile-disp {
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+
+    .logo {
+        width: 100px;
+    }
+
+    .Navbg {
+        background-image: url("../images/image-1.png");
+        background-size: 100%;
+    }
+
+    .button-nav {
+        width: 80px;
+        height: 28px;
+        font-size: 10px !important
+    }
+
+    .bgImg {
+        background-image: none;
+        background-color: rgb(211, 210, 210);
+    }
+
+    .card-home {
+        width: 80%;
+    }
+
+    .explore {
+        color: rgb(59, 59, 59);
+    }
+
+    .city-together {
+        color: rgb(59, 59, 59);
+    }
+
+    .card-tour {
+        width: 20rem;
+    }
+
+    /* detail */
+    .font-title {
+        font-size: 20px;
+    }
+
+    .container-trip-info {
+        margin-bottom: 20px;
+    }
+
+    /* admin page */
+    .modal-approv {
+        width: 100%;
+    }
+    .windows-disp {
+        display: none;
+    }
+    
 }

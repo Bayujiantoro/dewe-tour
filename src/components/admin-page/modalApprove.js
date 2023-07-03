@@ -19,16 +19,16 @@ export default function ModalApprove(props) {
 
         <div class="modal-body">
 
-            <div className=" rounded my-5" style={{ backgroundColor: "white", width: "85%", margin: "auto", border: "2px solid grey" }}>
+            <div className=" rounded my-5 modal-approv" >
 
                 <div className="my-5">
-                    <div className="d-flex justify-content-between" style={{ width: "90%", margin: "auto" }}>
+                    <div className="d-md-flex justify-content-between" style={{ width: "90%", margin: "auto" }}>
                         <div className=''>
                             <Image className='mt-3' src={Logo} />
                         </div>
                         <div className=''>
-                            <p className='fs-2 fw-bold  mb-0 text-end'>Booking</p>
-                            <p className='fs-5 fw-bold text-end' style={{ color: "grey" }}>Saturday, <span className='fw-normal'>25 august 2024</span></p>
+                            <p className='fs-2 fw-bold  mb-0 text-md-end'>Booking</p>
+                            <p className='fs-5 fw-bold text-md-end' style={{ color: "grey" }}>Saturday, <span className='fw-normal'>25 august 2024</span></p>
                         </div>
 
                     </div>
@@ -57,7 +57,7 @@ export default function ModalApprove(props) {
                                 <p style={{ color: "grey", marginTop: "0!important", fontSize: "13px" }} className='fw-medium '>{data.trip.transportation}</p>
                             </div>
                         </div>
-                        <div className=' d-flex justify-content-end'>
+                        <div className=' d-flex justify-content-sm-end'>
                             <div className=''>
                                 <Image src={UploadImg} style={{ width: "170px" }} />
                                 <p style={{ color: "grey", fontSize: "13px" }} className='text-end fw-medium pt-3'>Upload Payment Proof</p>
@@ -69,7 +69,7 @@ export default function ModalApprove(props) {
                     </div>
 
 
-                    <div style={{ width: "90%", margin: "auto", marginBottom: "0" }} className='mt-2'>
+                    <div style={{ width: "90%", margin: "auto", marginBottom: "0" }} className='mt-2 table-responsive'>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -91,13 +91,19 @@ export default function ModalApprove(props) {
                                 </tr>
                                 <tr>
                                     {/* <th scope="row">1</th> */}
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <th scope='row'> Total</th>
-                                    <th scope='row'> :  <span style={{ color: "red" }}>IDR. {data.Total.toLocaleString()}</span></th>
+                                    <td className="windows-disp"></td>
+                                    <td className="windows-disp"></td>
+                                    <td className="windows-disp"></td>
+                                    <td className="windows-disp"></td>
+                                    {/* <th scope='row' className="mobile-disp"> Total</th>
+                                    <th scope='row' className="mobile-disp"> :  <span style={{ color: "red" }}>IDR. {data.Total.toLocaleString()}</span></th>
+                                    <td></td> */}
+                                   
+
+                                    <th scope='row' > Total</th>
+                                    <th scope='row' > :  <span style={{ color: "red" }}>IDR. {data.Total.toLocaleString()}</span></th>
                                 </tr>
+                                
 
                             </tbody>
                         </table>

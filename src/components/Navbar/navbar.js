@@ -51,11 +51,11 @@ function NavigationBar(props) {
 
   return (
     <div>
-      <Navbar>
-        <Container>
+      <Navbar className='Navbg'>
+        <Container >
           <a href='/'>
 
-            <Image src={Logo} />
+            <Image src={Logo} className='logo'  />
           </a>
           <Navbar.Collapse className="justify-content-end" >
 
@@ -83,8 +83,8 @@ function NavigationBar(props) {
                 )}
               </Dropdown>
             ) : (<Stack direction="horizontal" gap={3}>
-              <Button className='bt-transparant btn-size' onClick={ModalShowLogin}>   Login   </Button>{' '}
-              <Button variant="warning" style={{ color: "white" }} onClick={ModalShowReg}>Register</Button>{' '}
+              <Button className='bt-transparant btn-size button-nav' onClick={ModalShowLogin}>   Login   </Button>{' '}
+              <Button variant="warning" className='button-nav' style={{ color: "white" }} onClick={ModalShowReg}>Register</Button>{' '}
             </Stack>)}
           </Navbar.Collapse>
         </Container>

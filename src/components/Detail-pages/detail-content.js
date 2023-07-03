@@ -129,10 +129,10 @@ export default function DetailContaint() {
 
     return (
 
-        <div>
+        <div >
 
-            <div className="container my-5 ps-5 " style={{ width: "80%" }}>
-                <h1 className="fw-bold">{getTrip?.Title}</h1>
+            <div className="container my-5 ">
+                <p className="fw-bold font-title">{getTrip?.Title}</p>
                 <p style={{ color: "grey", fontSize: "20px" }} className="fw-semibold">{getTrip?.Country?.Name}</p>
                 <Carosl Image={getTrip?.Image} />
                 <p className="fw-bold fs-4 mt-5">Information Trip</p>
@@ -149,7 +149,7 @@ export default function DetailContaint() {
                 <div className="mt-5 d-flex justify-content-between">
                     <p style={{ color: "darkorange", fontWeight: "700", fontSize: "20px" }}> IDR. {getTrip?.Price.toLocaleString()}  <span style={{ color: "black" }}>/ Person</span></p>
 
-                    <div className="d-flex">
+                    <div className="d-flex me-1">
                         <Image style={{ height: "18px", width: "18px", marginRight: "18px", marginTop: "3px", cursor: "pointer" }} src={Minus} onClick={HandleMinus} />
                         <p style={{ marginRight: "18px", display: "inline-block" }}>{qty}</p>
                         <Image style={{ height: "18px", width: "18px", marginTop: "3px", cursor: "pointer" }} src={Plus} onClick={HandlePlus} />
@@ -166,7 +166,7 @@ export default function DetailContaint() {
                     </div>
                 </div>
                 <hr></hr>
-                <div className=" d-flex justify-content-end">
+                <div className=" d-flex justify-content-md-end justify-content-center">
                     <button type="button" className="btn btn-orange" style={{ borderRadius: "3px" }} onClick={createTransc.mutate}> BOOK NOW </button>
                 </div>
 

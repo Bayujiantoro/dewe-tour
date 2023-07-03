@@ -21,8 +21,8 @@ export default function ListTransaction() {
             <NavLog />
             <div className="container ">
                 <p className="fs-3 fw-bold mt-5">Incoming Transaction</p>
-                <table class="table bg-white mb-5 table-hover">
-                    <thead className="table-list-transaction" >
+                <table className="table bg-white mb-5 table-hover">
+                    <thead className="" >
 
                         <tr >
                             <th scope="col">No</th>

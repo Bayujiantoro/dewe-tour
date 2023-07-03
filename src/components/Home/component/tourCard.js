@@ -12,12 +12,12 @@ export default function TourCard() {
     
 
     return (
-        <div className=" row row-cols-1 row-cols-lg-3 row-cols-md-2 m-auto mb-5" style={{ width: "90%" }}>
+        <div className=" row row-cols-1 row-cols-lg-3 row-cols-md-2 mb-5" >
 
             {
                 Trip?.map((item, index) => (
-                    <div className="col mt-5 mb-3" key={index}>
-                        <Card style={{ width: '22rem', height: "350px" }} className='position-relative m-auto' >
+                    <div className="col mt-5 mb-3 " key={index}>
+                        <Card className='position-relative m-auto card-tour' >
                             <Card.Img variant="top" src={item.image} style={{ width: "95%", margin: "auto", marginTop: "9px" }} />
                             <p style={{ top: "33px", right: "8px", borderRadius: "  5px 0 0 5px" }} className='position-absolute bg-white'>12/{item.quota}</p>
 

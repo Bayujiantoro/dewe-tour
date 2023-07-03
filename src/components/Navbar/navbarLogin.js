@@ -60,7 +60,7 @@ function NavLog() {
       <Container>
         <a href='/'>
 
-          <Image src={Logo} />
+          <Image className='logo' src={Logo} />
         </a>
         <Navbar.Collapse className="justify-content-end" >
           {auth === "isAdmin" || auth === "noAdmin" ? (
@@ -92,8 +92,8 @@ function NavLog() {
             </Stack>
           ) : (
             <Stack direction="horizontal" gap={3}>
-              <Button className='bt-transparant btn-size' onClick={ModalShowLogin}>   Login   </Button>{' '}
-              <Button variant="warning" style={{ color: "white" }} onClick={ModalShowReg}>Register</Button>{' '}
+              <Button className='bt-transparant btn-size button-nav' onClick={ModalShowLogin}>   Login   </Button>{' '}
+              <Button variant="warning" className='button-nav' style={{ color: "white" }} onClick={ModalShowReg}>Register</Button>{' '}
             </Stack>
           )}
 

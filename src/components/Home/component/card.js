@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 export default function Cards({ img, title, desc }) {
     return (
 
-        <div>
-            <Card style={{ width: '13rem', height:"300px"}}>
+        <div className='mb-md-3'>
+            <Card className='card-home mb-3 mb-md-0 py-3' >
                 <Card.Img variant="top" src={img} style={{ width: "80px" , margin:"auto"}} />
                 <div style={{ textAlign:"center", marginBottom:"30px"}}>
                     

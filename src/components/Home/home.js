@@ -32,14 +32,15 @@ export default function Home() {
 
                 <NavigationBar inLog={loginShow} inReg={registerShow} />
                 <Tagline />
-                <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                <div className=" row row-cols-1 row-cols-lg-4 row-cols-md-2 container-fluid ms-1 ms-md-0">
                     <Cards img={Guarantine} title="Best Price Guarantee" desc="A small river named. Duren flows by their places and suplies" />
                     <Cards img={Heart} title="Best Price Guarantee" desc="A small river named. Duren flows by their places and suplies" />
                     <Cards img={Agent} title="Best Price Guarantee" desc="A small river named. Duren flows by their places and suplies" />
                     <Cards img={Guarantine} title="Best Price Guarantee" desc="A small river named. Duren flows by their places and suplies" />
                 </div>
                 <h1 style={{ textAlign: "center", marginTop: " 50px", marginBottom: "50px" }}>Group Text</h1>
-                <div >
+
+                <div className=" container-fluid">
                     <TourCard  />
 
                 </div>

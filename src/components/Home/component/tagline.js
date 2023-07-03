@@ -8,9 +8,9 @@ import InputGroup from 'react-bootstrap/InputGroup';
 export default function Tagline() {
     return (
         <div>
-            <div style={{ width: '80%', margin: "auto", marginTop: "30px" }}>
-                <h1 style={{ color: 'white', fontWeight: "800", fontSize: "50px" }}>Explore</h1>
-                <h1 style={{ color: 'white', fontWeight: "100", fontSize: "60px" }}>your amazing city together</h1>
+            <div className='tagline-container' >
+                <h1 className='explore'>Explore</h1>
+                <h1 className='city-together'>your amazing city together</h1>
 
             </div>
             <div style={{width: "80%",  margin: 'auto', marginTop: "70px", boxSizing:"border-box", marginBottom:"70px"}}>
